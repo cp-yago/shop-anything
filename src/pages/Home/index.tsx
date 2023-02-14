@@ -7,6 +7,7 @@ import { BiCoffee } from 'react-icons/bi'
 import introCoffee from '../../assets/intro-coffee.svg'
 import { defaultTheme } from '../../styles/themes/default'
 import { Item } from '../Home/Item'
+import { CoffeeList } from './CoffeeList'
 
 export const Home = () => {
   return (
@@ -41,6 +42,7 @@ export const Home = () => {
         </TitleContainer>
         <img src={introCoffee} alt="coffee" />
       </IntroContainer>
+      <CoffeeList />
     </Container>
   )
 }

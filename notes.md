@@ -7,7 +7,7 @@
 
 ### Components
 
-- [] Header
+- [x] Header
 - [] Product List e Item
 - [] Addredd Form
 - [] Payment type

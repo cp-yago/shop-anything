@@ -1,7 +1,7 @@
 export const defaultTheme = {
   white: '#FAFAFA',
   'white-100': '#F3F2F2',
-
+  
   'purple-brand': '#EBE5F9',
   'purple-light': '#8047F8',
   'purple-dark': '#4B2995',

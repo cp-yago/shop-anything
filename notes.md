@@ -1,7 +1,7 @@
 # Coffee delivery
 
 ### Pages
-- [] Home
+- [x] Home
 - [] Checkout
 - [] Success
 

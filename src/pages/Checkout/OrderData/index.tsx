@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Container, Card, Input, Row, PaymentTypeContainer, PaymentTypeCard } from "./styles"
+import { Container, Input, Row, PaymentTypeContainer, PaymentTypeCard } from "./styles"
 import { BiMap } from 'react-icons/bi'
 import { TfiMoney } from 'react-icons/tfi'
 import { BsCreditCard2Back } from 'react-icons/bs'
+import { Card } from "../../../components";
 
 export const OrderData = () => {
   const { register, handleSubmit } = useForm();

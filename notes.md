@@ -2,7 +2,7 @@
 
 ### Pages
 - [x] Home
-- [] Checkout
+- [x] Checkout
 - [] Success
 
 ### Components

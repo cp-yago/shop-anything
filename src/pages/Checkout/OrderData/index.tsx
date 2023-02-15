@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
-import { Container, Card, Input, Row } from "./styles"
+import { Container, Card, Input, Row, PaymentTypeContainer, PaymentTypeCard } from "./styles"
 import { BiMap } from 'react-icons/bi'
+import { TfiMoney } from 'react-icons/tfi'
+import { BsCreditCard2Back } from 'react-icons/bs'
 
 export const OrderData = () => {
   const { register, handleSubmit } = useForm();
@@ -32,6 +34,31 @@ export const OrderData = () => {
           <Input type="text" placeholder="Cidade" {...register("city")} width={'40%'} />
           <Input type="text" placeholder="UF" {...register("state")} width={'10%'} />
         </form>
+      </Card>
+      <Card>
+        <div className="sub-title">
+          <TfiMoney />
+          <h1>Pagamento</h1>
+        </div>
+        <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+
+        <PaymentTypeContainer>
+          <PaymentTypeCard>
+            <BsCreditCard2Back />
+            Cartão de crédito
+          </PaymentTypeCard>
+
+          <PaymentTypeCard>
+            <BsCreditCard2Back />
+            Cartão de débito
+          </PaymentTypeCard>
+
+          <PaymentTypeCard>
+            <BsCreditCard2Back />
+            Dinheiro
+          </PaymentTypeCard>
+        </PaymentTypeContainer>
+
       </Card>
     </Container>
   )

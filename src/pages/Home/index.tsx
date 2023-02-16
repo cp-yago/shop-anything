@@ -6,7 +6,7 @@ import { BiCoffee } from 'react-icons/bi'
 
 import introCoffee from '../../assets/intro-coffee.svg'
 import { defaultTheme } from '../../styles/themes/default'
-import { Item } from '../Home/Item'
+import { Item } from '../../components/Item'
 import { CoffeeList } from './CoffeeList'
 
 export const Home = () => {

@@ -1,4 +1,10 @@
-import { Container, ActionsContainer, LocationButton, CartButton } from './styles'
+import {
+  Container,
+  ActionsContainer,
+  LocationButton,
+  CartButton,
+  Counter
+} from './styles'
 import { BiMap } from 'react-icons/bi'
 import { HiShoppingCart } from 'react-icons/hi'
 import logoSvg from '../../assets/logo.svg'
@@ -13,7 +19,8 @@ export const Navbar = () => {
           São Paulo, SP
         </LocationButton>
         <CartButton>
-          <HiShoppingCart />
+          <HiShoppingCart size={50} />
+          <Counter>3</Counter>
         </CartButton>
       </ActionsContainer>
     </Container>

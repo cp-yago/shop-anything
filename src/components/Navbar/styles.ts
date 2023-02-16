@@ -35,13 +35,32 @@ export const LocationButton = styled.button`
 export const CartButton = styled.button`
   background-color: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
+  z-index: 10;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px;
   width: 38px;
   height: 38px;
   margin-left: 8px;
+  padding: 10px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+export const Counter = styled.span`
+  position: relative;
+  background-color: ${(props) => props.theme['yellow-dark']};
+  color: ${(props) => props.theme['white']};
+  width: 15px;
+  height: 15px;
+  border-radius: 1000px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  top: -35px;
+  left: 15px;
+  z-index: 10;
 `;

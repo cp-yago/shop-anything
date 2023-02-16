@@ -1,37 +1,21 @@
 import { Container } from './styles'
 import { CoffeeItem } from "./CoffeeItem"
+import { useCartContext } from '../../../contexts/CartContext'
 
 export const CoffeeList = () => {
+  const { products } = useCartContext()
   return (
     <Container>
-      <CoffeeItem
-        title="Expresso Tradicional"
-        subTitle="O tradicional café feito com água quente e grãos moídos"
-        tags={['Tradicional']}
-        price={9.0}
-        quantity={1}
-      />
-      <CoffeeItem
-        title="Expresso Tradicional"
-        subTitle="O tradicional café feito com água quente e grãos moídos"
-        tags={['Tradicional']}
-        price={9.0}
-        quantity={1}
-      />
-      <CoffeeItem
-        title="Expresso Tradicional"
-        subTitle="O tradicional café feito com água quente e grãos moídos"
-        tags={['Tradicional']}
-        price={9.0}
-        quantity={1}
-      />
-      <CoffeeItem
-        title="Expresso Tradicional"
-        subTitle="O tradicional café feito com água quente e grãos moídos"
-        tags={['Tradicional']}
-        price={9.0}
-        quantity={1}
-      />
+      {products.map((product) => (
+        <CoffeeItem
+          key={product.id}
+          imgPath={product.img}
+          title={product.name}
+          subTitle={product.description}
+          tags={product.tags}
+          price={product.price}
+        />
+      ))}
     </Container>
   )
 }

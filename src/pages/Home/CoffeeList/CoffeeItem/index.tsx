@@ -3,12 +3,9 @@ import {
   BuyContainer,
   PriceContainer,
   Tag,
-  QuantityContainer,
   CartButton
 } from './styles'
 
-import traditionalExpresso from '../../../../assets/coffees/traditional-expresso.svg'
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { HiShoppingCart } from 'react-icons/hi'
 import { QuantitySelector } from '../../../../components'
 
@@ -17,7 +14,7 @@ interface CoffeeItemProps {
   subTitle: string
   tags: string[]
   price: number
-  quantity: number
+  imgPath: string
 }
 
 export const CoffeeItem = ({
@@ -25,12 +22,14 @@ export const CoffeeItem = ({
   subTitle,
   tags,
   price,
-  quantity
+  imgPath
 }: CoffeeItemProps) => {
   return (
     <Container>
-      <img src={traditionalExpresso} alt="traditional expresso" />
-      {tags.map((tag) => <Tag>{tag}</Tag>)}
+      <img src={imgPath} alt="traditional expresso" />
+      <div>
+        {tags.map((tag) => <Tag>{tag}</Tag>)}
+      </div>
       <h1>{title}</h1>
       <p>{subTitle}</p>
       <div>

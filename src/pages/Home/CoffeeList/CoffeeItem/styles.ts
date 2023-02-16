@@ -35,13 +35,14 @@ export const Container = styled.div`
   }
 `;
 
-export const Tag = styled.div`
+export const Tag = styled.span`
   text-transform: uppercase;
   background-color: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
   font-size: 10px;
   padding: 4px;
   border-radius: 100px;
+  margin: 0 4px;
 `;
 
 export const BuyContainer = styled.div`

@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   padding: 0 20px;
-  margin-top: 32px;
+  margin: 16px;
 
   img {
     width: 120px;

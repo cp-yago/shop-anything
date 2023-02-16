@@ -3,15 +3,15 @@
 ### Pages
 - [x] Home
 - [x] Checkout
-- [] Success
+- [x] Success
 
 ### Components
 
 - [x] Header
-- [] Product List e Item
-- [] Addredd Form
-- [] Payment type
-- [] Checkout items
+- [x] Product List e Item
+- [x] Addredd Form
+- [x] Payment type
+- [x] Checkout items
 
 ### Requirements
 

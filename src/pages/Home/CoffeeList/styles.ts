@@ -5,4 +5,5 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 64px 160px;
+  margin: 0;
 `;

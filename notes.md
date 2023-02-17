@@ -21,3 +21,7 @@
 - [x] useReducer
 - [x] immer
 - [] localStorage
+
+### Melhorias
+
+- [] Adicionar toast de sucesso ao adicionar no cart

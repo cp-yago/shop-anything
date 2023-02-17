@@ -30,7 +30,6 @@ export function cartReducer(state: CartState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT_TO_CART:
       return produce(state, (draft) => {
-        console.log('debug draft', draft) 
         const productIndex = state.products.findIndex(
           (product) => product.product.id === action.payload.product.id
         )
@@ -42,6 +41,17 @@ export function cartReducer(state: CartState, action: any) {
           })
         } else {
           draft.products[productIndex].quantity++
+        }
+      })
+    case ActionTypes.REMOVE_PRODUCT_TO_CART:
+      return produce(state, (draft) => {
+        console.log('debug chegou aqui')
+        const productIndex = state.products.findIndex(
+          (product) => product.product.id === action.payload.productId
+        )
+        const alreadyInCart = productIndex > -1
+        if (alreadyInCart) {
+          draft.products[productIndex].quantity--
         }
       })
     default:

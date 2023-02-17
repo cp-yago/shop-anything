@@ -8,7 +8,6 @@ import {
 
 import { HiShoppingCart } from 'react-icons/hi'
 import { QuantitySelector } from '../../../../components'
-import { useCartContext } from '../../../../contexts/CartContext'
 
 interface CoffeeItemProps {
   id: number
@@ -27,8 +26,6 @@ export const CoffeeItem = ({
   price,
   imgPath
 }: CoffeeItemProps) => {
-  const { handleAddProduct } = useCartContext()
-
   return (
     <Container>
       <img src={imgPath} alt="traditional expresso" />

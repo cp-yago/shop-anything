@@ -6,7 +6,7 @@ import {
   useReducer,
   useState
 } from 'react'
-import { addProductToCart } from '../reducers/shopping/actions'
+import { addProductToCart, removeProductFromCart } from '../reducers/shopping/actions'
 import { cartReducer, CartState } from '../reducers/shopping/reducer'
 import { listProducts, Product } from '../services/api'
 
@@ -14,6 +14,7 @@ interface CartContextType {
   products: Product[],
   cart: CartState,
   handleAddProduct: (productId: number) => void
+  handleRemoveProduct: (productId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -44,6 +45,11 @@ export function CartContextProvider({
     if (product) dispatch(addProductToCart(product))
   }
 
+  const handleRemoveProduct = (productId: number) => {
+    console.log('debug chegou na handleRemoveProduct')
+    dispatch(removeProductFromCart(productId))
+  }
+
   const fetchProducts = async () => {
     const coffees = await listProducts()
     setProducts(coffees)
@@ -62,6 +68,7 @@ export function CartContextProvider({
       products,
       cart: cartState,
       handleAddProduct,
+      handleRemoveProduct
     }}>
       {children}
     </CartContext.Provider>

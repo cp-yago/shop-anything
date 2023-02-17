@@ -9,15 +9,15 @@ interface QuantitySelectorProps {
 
 export const QuantitySelector = ({ productId }: QuantitySelectorProps) => {
 
-  const { handleAddProduct, cart } = useCartContext()
+  const { handleAddProduct, handleRemoveProduct, cart } = useCartContext()
 
   const quantity = useMemo(() => {
-    return cart.products.find((product) => product.product.id === productId)?.quantity
+    return cart.products.find((product) => product.product.id === productId)?.quantity || 0
   }, [cart])
 
   return (
     <Container>
-      <button>
+      <button onClick={() => handleRemoveProduct(productId)}>
         <AiOutlineMinus />
       </button>
       <span className='quantity'>{quantity}</span>

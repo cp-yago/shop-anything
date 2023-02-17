@@ -57,6 +57,17 @@ export function cartReducer(state: CartState, action: any) {
           }
         }
       })
+      case ActionTypes.REMOVE_PRODUCT:
+        return produce(state, (draft) => {
+          const productIndex = state.products.findIndex(
+            (product) => product.product.id === action.payload.productId
+          )
+          const alreadyInCart = productIndex > -1
+          if (alreadyInCart) {
+            const productsFiltered = state.products.filter((product) => product.product.id !== action.payload.productId)
+            draft.products = productsFiltered
+          }
+        })
     default:
       return state
   }

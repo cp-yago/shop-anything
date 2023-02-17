@@ -11,6 +11,7 @@ interface SummaryItemProps {
 }
 
 const SummaryItem = ({ product }: SummaryItemProps) => {
+  const { handleRemoveProductFromCart } = useCartContext()
   const total = product.product.price * product.quantity
   return (
     <SummaryItemContainer>
@@ -21,7 +22,7 @@ const SummaryItem = ({ product }: SummaryItemProps) => {
         <h1>Expresso cremoso</h1>
         <div className="quantity-container">
           <QuantitySelector productId={product.product.id} />
-          <button>
+          <button onClick={() => handleRemoveProductFromCart(product.product.id)}>
             <BiTrash />
             Remover
           </button>

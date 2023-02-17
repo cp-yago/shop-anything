@@ -6,7 +6,7 @@ import {
   useReducer,
   useState
 } from 'react'
-import { increaseProductQuantity, decreaseProductQuantity } from '../reducers/shopping/actions'
+import { increaseProductQuantity, decreaseProductQuantity, removeProduct } from '../reducers/shopping/actions'
 import { cartReducer, CartState } from '../reducers/shopping/reducer'
 import { listProducts, Product } from '../services/api'
 
@@ -15,6 +15,7 @@ interface CartContextType {
   cart: CartState,
   handleIncreaseProductQuantity: (productId: number) => void
   handleDecreaseProductQuantity: (productId: number) => void
+  handleRemoveProductFromCart: (productId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -49,6 +50,10 @@ export function CartContextProvider({
     dispatch(decreaseProductQuantity(productId))
   }
 
+  const handleRemoveProductFromCart = (productId: number) => {
+    dispatch(removeProduct(productId))
+  }
+
   const fetchProducts = async () => {
     const coffees = await listProducts()
     setProducts(coffees)
@@ -67,7 +72,8 @@ export function CartContextProvider({
       products,
       cart: cartState,
       handleIncreaseProductQuantity,
-      handleDecreaseProductQuantity
+      handleDecreaseProductQuantity,
+      handleRemoveProductFromCart
     }}>
       {children}
     </CartContext.Provider>

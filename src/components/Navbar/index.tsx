@@ -9,7 +9,11 @@ import { BiMap } from 'react-icons/bi'
 import { HiShoppingCart } from 'react-icons/hi'
 import logoSvg from '../../assets/logo.svg'
 
-export const Navbar = () => {
+interface NavbarProps {
+  totalProducts: number
+}
+
+export const Navbar = ({ totalProducts }: NavbarProps) => {
   return (
     <Container>
       <img src={logoSvg} alt="logo" />
@@ -20,7 +24,7 @@ export const Navbar = () => {
         </LocationButton>
         <CartButton>
           <HiShoppingCart size={50} />
-          <Counter>3</Counter>
+          {totalProducts > 0 && <Counter>{totalProducts}</Counter>}
         </CartButton>
       </ActionsContainer>
     </Container>

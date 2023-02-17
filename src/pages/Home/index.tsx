@@ -8,11 +8,16 @@ import introCoffee from '../../assets/intro-coffee.svg'
 import { defaultTheme } from '../../styles/themes/default'
 import { Item } from '../../components/Item'
 import { CoffeeList } from './CoffeeList'
+import { useCartContext } from '../../contexts/CartContext'
 
 export const Home = () => {
+  const { cart } = useCartContext()
+  const totalProductsInCar = cart.products.reduce((previousValue, { quantity },) => {
+    return previousValue + quantity
+  }, 0)
   return (
     <Container>
-      <Navbar />
+      <Navbar totalProducts={totalProductsInCar} />
       <IntroContainer>
         <TitleContainer>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>

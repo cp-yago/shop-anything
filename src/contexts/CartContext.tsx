@@ -13,7 +13,7 @@ import { listProducts, Product } from '../services/api'
 interface CartContextType {
   products: Product[],
   cart: CartState,
-  handleAddProduct: (product: Product) => void
+  handleAddProduct: (productId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -39,8 +39,9 @@ export function CartContextProvider({
     initialState,
   )
 
-  const handleAddProduct = (product: Product) => {
-    dispatch(addProductToCart(product))
+  const handleAddProduct = (productId: number) => {
+    const product = products.find((product) => product.id === productId)
+    if (product) dispatch(addProductToCart(product))
   }
 
   const fetchProducts = async () => {
@@ -52,10 +53,14 @@ export function CartContextProvider({
     fetchProducts()
   }, [])
 
+  useEffect(() => {
+    console.log('debug cartState: ', cartState)
+  }, [cartState])
+
   return (
     <CartContext.Provider value={{
       products,
-      cart: initialState,
+      cart: cartState,
       handleAddProduct,
     }}>
       {children}

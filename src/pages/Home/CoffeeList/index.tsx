@@ -9,6 +9,7 @@ export const CoffeeList = () => {
       {products.map((product) => (
         <CoffeeItem
           key={product.id}
+          id={product.id}
           imgPath={product.img}
           title={product.name}
           subTitle={product.description}

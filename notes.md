@@ -16,8 +16,8 @@
 ### Requirements
 
 - [] React Hook Form
-- [] Context API
-- [] Styled components
-- [] useReducer
-- [] immer
+- [x] Context API
+- [x] Styled components
+- [x] useReducer
+- [x] immer
 - [] localStorage

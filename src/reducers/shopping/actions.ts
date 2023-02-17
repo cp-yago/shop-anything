@@ -1,22 +1,22 @@
 import { Product } from "../../services/api";
 
 export const enum ActionTypes {
-  ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART',
-  REMOVE_PRODUCT_TO_CART = 'REMOVE_PRODUCT_TO_CART',
+  INCREASE_PRODUCT_QUANTITY = 'INCREASE_PRODUCT_QUANTITY',
+  DECREASE_PRODUCT_QUANTITY = 'DECREASE_PRODUCT_QUANTITY',
 }
 
-export function addProductToCart(product: Product) {
+export function increaseProductQuantity(product: Product) {
   return {
-    type: ActionTypes.ADD_PRODUCT_TO_CART,
+    type: ActionTypes.INCREASE_PRODUCT_QUANTITY,
     payload: {
       product
     }
   }
 }
 
-export function removeProductFromCart(productId: number) {
+export function decreaseProductQuantity(productId: number) {
   return {
-    type: ActionTypes.REMOVE_PRODUCT_TO_CART,
+    type: ActionTypes.DECREASE_PRODUCT_QUANTITY,
     payload: {
       productId
     }

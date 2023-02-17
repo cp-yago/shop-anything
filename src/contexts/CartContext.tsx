@@ -6,7 +6,7 @@ import {
   useReducer,
   useState
 } from 'react'
-import { addProductToCart, removeProductFromCart } from '../reducers/shopping/actions'
+import { increaseProductQuantity, decreaseProductQuantity } from '../reducers/shopping/actions'
 import { cartReducer, CartState } from '../reducers/shopping/reducer'
 import { listProducts, Product } from '../services/api'
 
@@ -42,12 +42,11 @@ export function CartContextProvider({
 
   const handleAddProduct = (productId: number) => {
     const product = products.find((product) => product.id === productId)
-    if (product) dispatch(addProductToCart(product))
+    if (product) dispatch(increaseProductQuantity(product))
   }
 
   const handleRemoveProduct = (productId: number) => {
-    console.log('debug chegou na handleRemoveProduct')
-    dispatch(removeProductFromCart(productId))
+    dispatch(decreaseProductQuantity(productId))
   }
 
   const fetchProducts = async () => {

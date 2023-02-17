@@ -8,12 +8,21 @@ import {
 import { BiMap } from 'react-icons/bi'
 import { HiShoppingCart } from 'react-icons/hi'
 import logoSvg from '../../assets/logo.svg'
+import { useNavigate } from 'react-router-dom'
+import { useCartContext } from '../../contexts/CartContext'
 
-interface NavbarProps {
-  totalProducts: number
-}
+export const Navbar = () => {
+  const { cart } = useCartContext()
+  const navigate = useNavigate()
 
-export const Navbar = ({ totalProducts }: NavbarProps) => {
+  const totalProductsInCar = cart.products.reduce((previousValue, { quantity }) => {
+    return previousValue + quantity
+  }, 0)
+
+  const handleGoToCart = () => {
+    navigate('/checkout')
+  }
+
   return (
     <Container>
       <img src={logoSvg} alt="logo" />
@@ -22,9 +31,9 @@ export const Navbar = ({ totalProducts }: NavbarProps) => {
           <BiMap />
           São Paulo, SP
         </LocationButton>
-        <CartButton>
+        <CartButton onClick={handleGoToCart}>
           <HiShoppingCart size={50} />
-          {totalProducts > 0 && <Counter>{totalProducts}</Counter>}
+          {totalProductsInCar > 0 && <Counter>{totalProductsInCar}</Counter>}
         </CartButton>
       </ActionsContainer>
     </Container>

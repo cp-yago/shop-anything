@@ -2,18 +2,24 @@ import { Card, QuantitySelector } from "../../../components"
 import { Container, SummaryItemContainer } from "./styles"
 import { BiTrash } from 'react-icons/bi'
 
-import creamyEspresso from '../../../assets/coffees/creamy-espresso.svg'
+import { useCartContext } from "../../../contexts/CartContext"
+import { ProductInCart } from "../../../reducers/shopping/reducer"
 
-const SummaryItem = () => {
+interface SummaryItemProps {
+  product: ProductInCart
+}
+
+const SummaryItem = ({ product }: SummaryItemProps) => {
+  const total = product.product.price * product.quantity
   return (
     <SummaryItemContainer>
       <div className="image-container">
-        <img src={creamyEspresso} alt="Creamy espresso" />
+        <img src={product.product.img} alt="Creamy espresso" />
       </div>
       <div className="info-container">
         <h1>Expresso cremoso</h1>
         <div className="quantity-container">
-          <QuantitySelector />
+          <QuantitySelector productId={product.product.id} />
           <button>
             <BiTrash />
             Remover
@@ -21,19 +27,22 @@ const SummaryItem = () => {
         </div>
       </div>
       <div>
-        <span>R$ 10,00</span>
+        <span>{`R$ ${total}`}</span>
       </div>
     </SummaryItemContainer>
   )
 }
 
 export const Summary = () => {
+  const { cart } = useCartContext()
+
   return (
     <Container>
       <h1>Cafés selecionados</h1>
       <Card>
-        <SummaryItem />
-        <SummaryItem />
+        {cart.products.map((product) => (
+          <SummaryItem product={product} />
+        ))}
 
         <div className="total-container">
           <div className="total-item">

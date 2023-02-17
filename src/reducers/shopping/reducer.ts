@@ -2,7 +2,7 @@ import { Product } from "../../services/api"
 import { ActionTypes } from "./actions"
 import { produce } from 'immer'
 
-interface ProductInCart {
+export interface ProductInCart {
   product: Product
   quantity: number
 }

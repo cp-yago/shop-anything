@@ -8,6 +8,7 @@ import {
 
 import { HiShoppingCart } from 'react-icons/hi'
 import { QuantitySelector } from '../../../../components'
+import { useNavigate } from 'react-router-dom'
 
 interface CoffeeItemProps {
   id: number
@@ -26,6 +27,10 @@ export const CoffeeItem = ({
   price,
   imgPath
 }: CoffeeItemProps) => {
+  const navigate = useNavigate()
+  const handleGoToCart = () => {
+    navigate('/checkout')
+  }
   return (
     <Container>
       <img src={imgPath} alt="traditional expresso" />
@@ -42,7 +47,7 @@ export const CoffeeItem = ({
           <span className='price'>{price.toFixed(2)}</span>
         </PriceContainer>
         <QuantitySelector productId={id} />
-        <CartButton>
+        <CartButton onClick={handleGoToCart}>
           <HiShoppingCart />
         </CartButton>
       </BuyContainer>

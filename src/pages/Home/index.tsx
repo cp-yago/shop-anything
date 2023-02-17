@@ -11,13 +11,10 @@ import { CoffeeList } from './CoffeeList'
 import { useCartContext } from '../../contexts/CartContext'
 
 export const Home = () => {
-  const { cart } = useCartContext()
-  const totalProductsInCar = cart.products.reduce((previousValue, { quantity },) => {
-    return previousValue + quantity
-  }, 0)
+
   return (
     <Container>
-      <Navbar totalProducts={totalProductsInCar} />
+      <Navbar />
       <IntroContainer>
         <TitleContainer>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>

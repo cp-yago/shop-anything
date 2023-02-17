@@ -13,8 +13,8 @@ import { listProducts, Product } from '../services/api'
 interface CartContextType {
   products: Product[],
   cart: CartState,
-  handleAddProduct: (productId: number) => void
-  handleRemoveProduct: (productId: number) => void
+  handleIncreaseProductQuantity: (productId: number) => void
+  handleDecreaseProductQuantity: (productId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -40,12 +40,12 @@ export function CartContextProvider({
     initialState,
   )
 
-  const handleAddProduct = (productId: number) => {
+  const handleIncreaseProductQuantity = (productId: number) => {
     const product = products.find((product) => product.id === productId)
     if (product) dispatch(increaseProductQuantity(product))
   }
 
-  const handleRemoveProduct = (productId: number) => {
+  const handleDecreaseProductQuantity = (productId: number) => {
     dispatch(decreaseProductQuantity(productId))
   }
 
@@ -66,8 +66,8 @@ export function CartContextProvider({
     <CartContext.Provider value={{
       products,
       cart: cartState,
-      handleAddProduct,
-      handleRemoveProduct
+      handleIncreaseProductQuantity,
+      handleDecreaseProductQuantity
     }}>
       {children}
     </CartContext.Provider>

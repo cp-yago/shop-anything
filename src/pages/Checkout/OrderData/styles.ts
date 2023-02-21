@@ -11,18 +11,26 @@ export const Container = styled.div`
     font-size: 18px;
     line-height: 130%;
   }
+
+  .error-message {
+    font-weight: 700;
+    margin: 8px 0;
+    color: ${(props) => props.theme.danger};
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
 `;
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: boolean
+}
 
 export const Input = styled.input<InputProps>`
   width: ${(props) => props.width};
   background-color: ${(props) => props.theme['white-100']};
-  border: 1px solid #E6E5E5;
+  border: 1px solid ${(props) => props.error ? props.theme.danger: '#E6E5E5'};
   border-radius: 4px;
   height: 42px;
   padding: 12px;

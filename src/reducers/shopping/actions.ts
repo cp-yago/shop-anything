@@ -1,9 +1,11 @@
 import { Product } from "../../services/api";
+import { AddressInfo, PaymentMethod } from "./reducer";
 
 export const enum ActionTypes {
   INCREASE_PRODUCT_QUANTITY = 'INCREASE_PRODUCT_QUANTITY',
   DECREASE_PRODUCT_QUANTITY = 'DECREASE_PRODUCT_QUANTITY',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
+  FINISH_ORDER = 'FINISH_ORDER'
 }
 
 export function increaseProductQuantity(product: Product) {
@@ -29,6 +31,19 @@ export function removeProduct(productId: number) {
     type: ActionTypes.REMOVE_PRODUCT,
     payload: {
       productId
+    }
+  }
+}
+
+export function finishOrder(
+  addressInfo: AddressInfo,
+  paymentMethod: PaymentMethod
+) {
+  return {
+    type: ActionTypes.FINISH_ORDER,
+    payload: {
+      addressInfo,
+      paymentMethod
     }
   }
 }

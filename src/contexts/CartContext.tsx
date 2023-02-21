@@ -16,6 +16,7 @@ interface CartContextType {
   handleIncreaseProductQuantity: (productId: number) => void
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
+  onSubmit: (data: any) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -59,6 +60,8 @@ export function CartContextProvider({
     setProducts(coffees)
   }
 
+  const onSubmit = (data: any) => console.log(data);
+
   useEffect(() => {
     fetchProducts()
   }, [])
@@ -73,7 +76,8 @@ export function CartContextProvider({
       cart: cartState,
       handleIncreaseProductQuantity,
       handleDecreaseProductQuantity,
-      handleRemoveProductFromCart
+      handleRemoveProductFromCart,
+      onSubmit
     }}>
       {children}
     </CartContext.Provider>

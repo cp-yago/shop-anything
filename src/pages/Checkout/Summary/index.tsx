@@ -71,7 +71,12 @@ export const Summary = () => {
               <strong>{formatNumberToCurrency(totalProductsInCar() + freightPrice)}</strong>
             </span>
           </div>
-          <button>Confirmar pedido</button>
+          <button
+            type="submit"
+            form="addressForm"
+          >
+            Confirmar pedido
+          </button>
         </div>
       </Card>
     </Container>

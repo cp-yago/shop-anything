@@ -7,7 +7,7 @@ export interface ProductInCart {
   quantity: number
 }
 
-interface AddressInfo {
+export interface AddressInfo {
   zipCode: number
   street: string
   number: number
@@ -17,7 +17,7 @@ interface AddressInfo {
   state: string
 }
 
-type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
+export type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
 
 export interface CartState {
   products: ProductInCart[]
@@ -67,6 +67,11 @@ export function cartReducer(state: CartState, action: any) {
             const productsFiltered = state.products.filter((product) => product.product.id !== action.payload.productId)
             draft.products = productsFiltered
           }
+        })
+      case ActionTypes.FINISH_ORDER:
+        return produce(state, (draft) => {
+          draft.addressInfo = action.payload.addressInfo
+          draft.paymentMethod = action.payload.paymentMethod
         })
     default:
       return state

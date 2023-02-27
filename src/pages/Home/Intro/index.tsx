@@ -1,4 +1,11 @@
-import { Container, TitleContainer, ItemsContainer } from './styles'
+import {
+  Container,
+  Content,
+  TitleContainer,
+  SubTitleContainer,
+  ImageContainer,
+  ItemsContainer
+} from './styles'
 import { BulletWithIcon } from '../../../components'
 import { HiShoppingCart } from 'react-icons/hi'
 import { FiBox, FiClock } from 'react-icons/fi'
@@ -10,9 +17,22 @@ import { defaultTheme } from '../../../styles/themes/default'
 export const Intro = () => {
   return (
     <Container>
-      <TitleContainer>
-        <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-        <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+
+      <Content>
+
+        <TitleContainer>
+          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+        </TitleContainer>
+
+        <SubTitleContainer>
+          <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+        </SubTitleContainer>
+
+        <ImageContainer>
+          <img src={introCoffee} alt="coffee" />
+        </ImageContainer>
+
+
         <ItemsContainer>
           <BulletWithIcon
             text='Compra simples e segura'
@@ -35,8 +55,10 @@ export const Intro = () => {
             iconBackgroundColor={defaultTheme['purple-light']}
           />
         </ItemsContainer>
-      </TitleContainer>
-      <img src={introCoffee} alt="coffee" />
+
+      </Content>
+
+
     </Container>
   )
 }

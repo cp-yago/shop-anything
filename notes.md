@@ -7,6 +7,8 @@
 
 ### Melhorias
 
+- [] Colocar botão "Adicionar mais itens" no cart
+- [] Não deixar ir para "/checkout" se não tiver produto no carrinho
 - [] Colocar um botão de voltar no "/chewckout"
 - [] Desabilitar botão "Confirmar pedido" se o form estiver incompleto
 - [] Hover no botão de cart no header

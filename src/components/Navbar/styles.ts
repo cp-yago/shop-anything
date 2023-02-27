@@ -46,6 +46,12 @@ export const CartButton = styled.button`
     width: 16px;
     height: 16px;
   }
+
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const Counter = styled.span`

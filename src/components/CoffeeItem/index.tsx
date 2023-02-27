@@ -7,7 +7,7 @@ import {
 } from './styles'
 
 import { HiShoppingCart } from 'react-icons/hi'
-import { QuantitySelector } from '../../../../components'
+import { QuantitySelector } from '..'
 import { useNavigate } from 'react-router-dom'
 
 interface CoffeeItemProps {

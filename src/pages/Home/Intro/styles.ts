@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-`;
-
-export const IntroContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -36,11 +32,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const ItemsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto;
   margin: 8px 0;
 `;
-
-

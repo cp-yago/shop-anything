@@ -20,7 +20,7 @@ export const IconWithBackground = ({ icon, iconBackgroundColor }: IconWithBackgr
   )
 }
 
-export const Item = ({ text, icon, iconBackgroundColor }: ItemProps) => {
+export const BulletWithIcon = ({ text, icon, iconBackgroundColor }: ItemProps) => {
   return (
     <Container>
       <IconWithBackground

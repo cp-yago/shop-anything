@@ -1,8 +1,8 @@
 import { Container } from './styles'
-import { CoffeeItem } from "./CoffeeItem"
+import { CoffeeItem } from "../../../components"
 import { useCartContext } from '../../../contexts/CartContext'
 
-export const CoffeeList = () => {
+export const ProductList = () => {
   const { products } = useCartContext()
   return (
     <Container>

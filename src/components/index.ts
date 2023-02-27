@@ -1,4 +1,5 @@
 export * from './Navbar'
 export * from './Card'
 export * from './QuantitySelector'
-export * from './Item'
+export * from './BulletWithIcon'
+export * from './CoffeeItem'

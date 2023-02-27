@@ -5,7 +5,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 8px 0;
-  margin-right: 32px;
 `;
 
 interface ContainerProps {

@@ -1,9 +1,9 @@
-import { Card } from "../../../../components"
-import { TfiMoney } from 'react-icons/tfi'
-import { PaymentTypeCard, PaymentTypeContainer } from "./styles"
-import { BsCreditCard2Back } from 'react-icons/bs'
+import { TfiMoney } from 'react-icons/tfi';
+import { BsCreditCard2Back } from 'react-icons/bs';
+import { Card } from '../../../../components';
+import { PaymentTypeCard, PaymentTypeContainer } from './styles';
 
-export const PaymentTypeSelector = () => {
+export function PaymentTypeSelector() {
   return (
     <Card>
       <div className="sub-title">
@@ -30,5 +30,5 @@ export const PaymentTypeSelector = () => {
       </PaymentTypeContainer>
 
     </Card>
-  )
+  );
 }

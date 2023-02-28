@@ -1,34 +1,34 @@
+import { BiMap } from 'react-icons/bi';
+import { HiShoppingCart } from 'react-icons/hi';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logoSvg from '../../assets/logo.svg';
 import {
   Container,
   ActionsContainer,
   LocationButton,
   CartButton,
-  Counter
-} from './styles'
-import { BiMap } from 'react-icons/bi'
-import { HiShoppingCart } from 'react-icons/hi'
-import logoSvg from '../../assets/logo.svg'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { useCartContext } from '../../contexts/CartContext'
+  Counter,
+} from './styles';
+import { useCartContext } from '../../contexts/CartContext';
 
-export const Navbar = () => {
-  const { cart } = useCartContext()
-  const navigate = useNavigate()
+export function Navbar() {
+  const { cart } = useCartContext();
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const shouldShowCartButton = !location.pathname.includes('/checkout')
+  const shouldShowCartButton = !location.pathname.includes('/checkout');
 
-  const totalProductsInCar = cart.products.reduce((previousValue, { quantity }) => {
-    return previousValue + quantity
-  }, 0)
+  const totalProductsInCar = cart.products.reduce((previousValue, {
+    quantity,
+  }) => previousValue + quantity, 0);
 
   const handleGoToCart = () => {
-    navigate('/checkout')
-  }
+    navigate('/checkout');
+  };
 
   const handleGoHome = () => {
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   return (
     <Container>
@@ -46,5 +46,5 @@ export const Navbar = () => {
         )}
       </ActionsContainer>
     </Container>
-  )
+  );
 }

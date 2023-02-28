@@ -25,7 +25,7 @@ export const Container = styled.div`
       height: 46px;
       text-transform: uppercase;
       background-color: ${(props) => props.theme['yellow-brand']};
-      color: ${(props) => props.theme['white']};
+      color: ${(props) => props.theme.white};
       margin: 32px auto;
     }
   }

@@ -3,12 +3,13 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useReducer,
-  useState
-} from 'react'
-import { increaseProductQuantity, decreaseProductQuantity, removeProduct } from '../reducers/shopping/actions'
-import { cartReducer, CartState } from '../reducers/shopping/reducer'
-import { listProducts, Product } from '../services/api'
+  useState,
+} from 'react';
+import { increaseProductQuantity, decreaseProductQuantity, removeProduct } from '../reducers/shopping/actions';
+import { cartReducer, CartState } from '../reducers/shopping/reducer';
+import { listProducts, Product } from '../services/api';
 
 interface CartContextType {
   products: Product[],
@@ -19,7 +20,7 @@ interface CartContextType {
   onSubmit: (data: any) => void
 }
 
-export const CartContext = createContext({} as CartContextType)
+export const CartContext = createContext({} as CartContextType);
 
 interface CartContextProviderProps {
   children: ReactNode
@@ -28,63 +29,71 @@ interface CartContextProviderProps {
 const initialState: CartState = {
   products: [],
   freigthPrice: 0,
-  paymentMethod: 'creditCard'
-}
+  paymentMethod: 'creditCard',
+};
 
 export function CartContextProvider({
-  children
+  children,
 }: CartContextProviderProps) {
-
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>([]);
 
   const [cartState, dispatch] = useReducer(
     cartReducer,
     initialState,
-  )
+  );
 
   const handleIncreaseProductQuantity = (productId: number) => {
-    const product = products.find((product) => product.id === productId)
-    if (product) dispatch(increaseProductQuantity(product))
-  }
+    const product = products.find((product) => product.id === productId);
+    if (product) dispatch(increaseProductQuantity(product));
+  };
 
   const handleDecreaseProductQuantity = (productId: number) => {
-    dispatch(decreaseProductQuantity(productId))
-  }
+    dispatch(decreaseProductQuantity(productId));
+  };
 
   const handleRemoveProductFromCart = (productId: number) => {
-    dispatch(removeProduct(productId))
-  }
+    dispatch(removeProduct(productId));
+  };
 
   const fetchProducts = async () => {
-    const coffees = await listProducts()
-    setProducts(coffees)
-  }
+    const coffees = await listProducts();
+    setProducts(coffees);
+  };
 
   const onSubmit = (data: any) => console.log(data);
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
-    console.log('debug cartState: ', cartState)
-  }, [cartState])
+    console.log('debug cartState: ', cartState);
+  }, [cartState]);
+
+  const contextValue = useMemo(() => ({
+    products,
+    cart: cartState,
+    handleIncreaseProductQuantity,
+    handleDecreaseProductQuantity,
+    handleRemoveProductFromCart,
+    onSubmit,
+  }), [
+    products,
+    cartState,
+    handleIncreaseProductQuantity,
+    handleDecreaseProductQuantity,
+    handleRemoveProductFromCart,
+    onSubmit,
+  ]);
 
   return (
-    <CartContext.Provider value={{
-      products,
-      cart: cartState,
-      handleIncreaseProductQuantity,
-      handleDecreaseProductQuantity,
-      handleRemoveProductFromCart,
-      onSubmit
-    }}>
+    <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
-  )
+  );
 }
 
 export const useCartContext = () => {
-  const context = useContext(CartContext)
-  return context
-}
+  const context = useContext(CartContext);
+  return context;
+};

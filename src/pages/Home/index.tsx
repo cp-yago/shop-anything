@@ -1,13 +1,13 @@
-import { Navbar } from '../../components'
-import { ProductList } from './ProductList'
-import { Intro } from './Intro'
+import { Navbar } from '../../components';
+import { ProductList } from './ProductList';
+import { Intro } from './Intro';
 
-export const Home = () => {
+export function Home() {
   return (
     <>
       <Navbar />
       <Intro />
       <ProductList />
     </>
-  )
+  );
 }

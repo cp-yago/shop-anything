@@ -57,7 +57,7 @@ export const CartButton = styled.button`
 export const Counter = styled.span`
   position: relative;
   background-color: ${(props) => props.theme['yellow-dark']};
-  color: ${(props) => props.theme['white']};
+  color: ${(props) => props.theme.white};
   width: 15px;
   height: 15px;
   border-radius: 1000px;

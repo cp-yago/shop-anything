@@ -1,18 +1,18 @@
-import { Card, QuantitySelector } from "../../../components"
-import { Container, SummaryItemContainer } from "./styles"
-import { BiTrash } from 'react-icons/bi'
+import { BiTrash } from 'react-icons/bi';
+import { Card, QuantitySelector } from '../../../components';
+import { Container, SummaryItemContainer } from './styles';
 
-import { useCartContext } from "../../../contexts/CartContext"
-import { ProductInCart } from "../../../reducers/shopping/reducer"
-import { formatNumberToCurrency } from "../../../utils/formatNumberToCurrency"
+import { useCartContext } from '../../../contexts/CartContext';
+import { ProductInCart } from '../../../reducers/shopping/reducer';
+import { formatNumberToCurrency } from '../../../utils/formatNumberToCurrency';
 
 interface SummaryItemProps {
   product: ProductInCart
 }
 
-const SummaryItem = ({ product }: SummaryItemProps) => {
-  const { handleRemoveProductFromCart } = useCartContext()
-  const total = product.product.price * product.quantity
+function SummaryItem({ product }: SummaryItemProps) {
+  const { handleRemoveProductFromCart } = useCartContext();
+  const total = product.product.price * product.quantity;
   return (
     <SummaryItemContainer>
       <div className="image-container">
@@ -22,7 +22,7 @@ const SummaryItem = ({ product }: SummaryItemProps) => {
         <h1>Expresso cremoso</h1>
         <div className="quantity-container">
           <QuantitySelector productId={product.product.id} />
-          <button onClick={() => handleRemoveProductFromCart(product.product.id)}>
+          <button type="button" onClick={() => handleRemoveProductFromCart(product.product.id)}>
             <BiTrash />
             Remover
           </button>
@@ -32,19 +32,17 @@ const SummaryItem = ({ product }: SummaryItemProps) => {
         <span>{`R$ ${total}`}</span>
       </div>
     </SummaryItemContainer>
-  )
+  );
 }
 
-export const Summary = () => {
-  const { cart } = useCartContext()
+export function Summary() {
+  const { cart } = useCartContext();
 
-  const totalProductsInCar = () => {
-    return cart.products.reduce((previousValue, { product: { price }, quantity }) => {
-      return previousValue + quantity * price
-    }, 0)
-  }
+  const totalProductsInCar = () => cart.products.reduce((previousValue, {
+    product: { price }, quantity,
+  }) => previousValue + quantity * price, 0);
 
-  const freightPrice = 9.99
+  const freightPrice = 9.99;
 
   return (
     <Container>
@@ -80,5 +78,5 @@ export const Summary = () => {
         </div>
       </Card>
     </Container>
-  )
+  );
 }

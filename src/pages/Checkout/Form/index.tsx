@@ -1,23 +1,23 @@
-import { useForm } from "react-hook-form";
-import { Container, Input, Row } from "./styles"
-import { BiMap } from 'react-icons/bi'
-import { Card } from "../../../components";
+import { useForm } from 'react-hook-form';
+import { BiMap } from 'react-icons/bi';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addressInfoSchema } from "./schema";
-import { useEffect } from "react";
-import { useCartContext } from "../../../contexts/CartContext";
-import { PaymentTypeSelector } from "./PaymentTypeSelector";
+import { useEffect } from 'react';
+import { Container, Input, Row } from './styles';
+import { Card } from '../../../components';
+import { addressInfoSchema } from './schema';
+import { useCartContext } from '../../../contexts/CartContext';
+import { PaymentTypeSelector } from './PaymentTypeSelector';
 
-export const Form = () => {
-  const { onSubmit } = useCartContext()
+export function Form() {
+  const { onSubmit } = useCartContext();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(addressInfoSchema)
+    resolver: yupResolver(addressInfoSchema),
   });
 
   useEffect(() => {
-    console.log('debug errors', errors)
-  }, [errors])
+    console.log('debug errors', errors);
+  }, [errors]);
 
   return (
     <Container>
@@ -34,20 +34,20 @@ export const Form = () => {
             <Input
               type="text"
               placeholder="CEP"
-              error={!!errors['zipCode']}
-              {...register("zipCode")}
+              error={!!errors.zipCode}
+              {...register('zipCode')}
             />
           </Row>
           <Row>
-            <Input type="text" placeholder="Rua" {...register("street")} width={'100%'} error={!!errors['street']} />
+            <Input type="text" placeholder="Rua" {...register('street')} width="100%" error={!!errors.street} />
           </Row>
           <Row>
-            <Input type="text" placeholder="Número" {...register("number")} width={'40%'} error={!!errors['number']} />
-            <Input type="text" placeholder="Complemento" {...register("additionalInfo")} width={'60%'} error={!!errors['additionalInfo']} />
+            <Input type="text" placeholder="Número" {...register('number')} width="40%" error={!!errors.number} />
+            <Input type="text" placeholder="Complemento" {...register('additionalInfo')} width="60%" error={!!errors.additionalInfo} />
           </Row>
-          <Input type="text" placeholder="Bairo" {...register("neighborhood")} width={'40%'} error={!!errors['neighborhood']} />
-          <Input type="text" placeholder="Cidade" {...register("city")} width={'40%'} error={!!errors['city']} />
-          <Input type="text" placeholder="UF" {...register("state")} width={'10%'} error={!!errors['state']} />
+          <Input type="text" placeholder="Bairo" {...register('neighborhood')} width="40%" error={!!errors.neighborhood} />
+          <Input type="text" placeholder="Cidade" {...register('city')} width="40%" error={!!errors.city} />
+          <Input type="text" placeholder="UF" {...register('state')} width="10%" error={!!errors.state} />
         </form>
 
         {
@@ -60,5 +60,5 @@ export const Form = () => {
       <PaymentTypeSelector />
 
     </Container>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { Product } from "../../services/api";
-import { AddressInfo, PaymentMethod } from "./reducer";
+import { Product } from '../../services/api';
+import { AddressInfo, PaymentMethod } from './reducer';
 
 export const enum ActionTypes {
   INCREASE_PRODUCT_QUANTITY = 'INCREASE_PRODUCT_QUANTITY',
@@ -12,38 +12,38 @@ export function increaseProductQuantity(product: Product) {
   return {
     type: ActionTypes.INCREASE_PRODUCT_QUANTITY,
     payload: {
-      product
-    }
-  }
+      product,
+    },
+  };
 }
 
 export function decreaseProductQuantity(productId: number) {
   return {
     type: ActionTypes.DECREASE_PRODUCT_QUANTITY,
     payload: {
-      productId
-    }
-  }
+      productId,
+    },
+  };
 }
 
 export function removeProduct(productId: number) {
   return {
     type: ActionTypes.REMOVE_PRODUCT,
     payload: {
-      productId
-    }
-  }
+      productId,
+    },
+  };
 }
 
 export function finishOrder(
   addressInfo: AddressInfo,
-  paymentMethod: PaymentMethod
+  paymentMethod: PaymentMethod,
 ) {
   return {
     type: ActionTypes.FINISH_ORDER,
     payload: {
       addressInfo,
-      paymentMethod
-    }
-  }
+      paymentMethod,
+    },
+  };
 }

@@ -1,5 +1,5 @@
-import { ReactElement } from "react"
-import { Container, IconContainer } from './styles'
+import { ReactElement } from 'react';
+import { Container, IconContainer } from './styles';
 
 interface ItemProps {
   text: string
@@ -12,15 +12,15 @@ interface IconWithBackgroundProps {
   iconBackgroundColor: string
 }
 
-export const IconWithBackground = ({ icon, iconBackgroundColor }: IconWithBackgroundProps) => {
+export function IconWithBackground({ icon, iconBackgroundColor }: IconWithBackgroundProps) {
   return (
     <IconContainer iconBackgroundColor={iconBackgroundColor}>
       {icon}
     </IconContainer>
-  )
+  );
 }
 
-export const BulletWithIcon = ({ text, icon, iconBackgroundColor }: ItemProps) => {
+export function BulletWithIcon({ text, icon, iconBackgroundColor }: ItemProps) {
   return (
     <Container>
       <IconWithBackground
@@ -31,5 +31,5 @@ export const BulletWithIcon = ({ text, icon, iconBackgroundColor }: ItemProps) =
         <span>{text}</span>
       </div>
     </Container>
-  )
+  );
 }

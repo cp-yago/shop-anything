@@ -1,14 +1,14 @@
+import { HiShoppingCart } from 'react-icons/hi';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   BuyContainer,
   PriceContainer,
   Tag,
-  CartButton
-} from './styles'
+  CartButton,
+} from './styles';
 
-import { HiShoppingCart } from 'react-icons/hi'
-import { QuantitySelector } from '..'
-import { useNavigate } from 'react-router-dom'
+import { QuantitySelector } from '..';
 
 interface CoffeeItemProps {
   id: number
@@ -19,18 +19,18 @@ interface CoffeeItemProps {
   imgPath: string
 }
 
-export const CoffeeItem = ({
+export function CoffeeItem({
   id,
   title,
   subTitle,
   tags,
   price,
-  imgPath
-}: CoffeeItemProps) => {
-  const navigate = useNavigate()
+  imgPath,
+}: CoffeeItemProps) {
+  const navigate = useNavigate();
   const handleGoToCart = () => {
-    navigate('/checkout')
-  }
+    navigate('/checkout');
+  };
   return (
     <Container>
       <img src={imgPath} alt="traditional expresso" />
@@ -39,12 +39,11 @@ export const CoffeeItem = ({
       </div>
       <h1>{title}</h1>
       <p>{subTitle}</p>
-      <div>
-      </div>
+      <div />
       <BuyContainer>
         <PriceContainer>
           <span>R$</span>
-          <span className='price'>{price.toFixed(2)}</span>
+          <span className="price">{price.toFixed(2)}</span>
         </PriceContainer>
         <QuantitySelector productId={id} />
         <CartButton onClick={handleGoToCart}>
@@ -52,5 +51,5 @@ export const CoffeeItem = ({
         </CartButton>
       </BuyContainer>
     </Container>
-  )
+  );
 }

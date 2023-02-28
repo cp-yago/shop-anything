@@ -1,9 +1,9 @@
-import { Navbar } from '../../components'
-import { Form } from './Form'
-import { Container, Content } from './styles'
-import { Summary } from './Summary'
+import { Navbar } from '../../components';
+import { Form } from './Form';
+import { Container, Content } from './styles';
+import { Summary } from './Summary';
 
-export const Checkout = () => {
+export function Checkout() {
   return (
     <Container>
       <Navbar />
@@ -12,5 +12,5 @@ export const Checkout = () => {
         <Summary />
       </Content>
     </Container>
-  )
+  );
 }

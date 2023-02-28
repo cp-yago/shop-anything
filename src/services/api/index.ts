@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'http://localhost:3000',
 });
 
 export interface Product {
@@ -14,6 +14,6 @@ export interface Product {
 }
 
 export const listProducts = async () => {
-  const response = await instance.get<Product[]>('/products')
-  return response.data
-}
+  const response = await instance.get<Product[]>('/products');
+  return response.data;
+};

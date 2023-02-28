@@ -6,7 +6,7 @@ import { Container, Input, Row } from './styles';
 import { Card } from '../../../components';
 import { addressInfoSchema } from './schema';
 import { useCartContext } from '../../../contexts/CartContext';
-import { PaymentTypeSelector } from './PaymentTypeSelector';
+import { PaymentMethodSelector } from './PaymentMethodSelector';
 
 export function Form() {
   const { onSubmit } = useCartContext();
@@ -57,7 +57,7 @@ export function Form() {
         }
       </Card>
 
-      <PaymentTypeSelector />
+      <PaymentMethodSelector />
 
     </Container>
   );

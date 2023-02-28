@@ -6,10 +6,13 @@ export const PaymentTypeContainer = styled.div`
   margin: 16px;
 `;
 
-export const PaymentTypeCard = styled.div`
+interface PaymentTypeOptionProps {
+  isSelected: boolean
+}
+
+export const PaymentTypeOption = styled.button<PaymentTypeOptionProps>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   width: 178.67px;
   height: 51px;
@@ -18,6 +21,8 @@ export const PaymentTypeCard = styled.div`
   background: #E6E5E5;
   border-radius: 6px;
   text-transform: uppercase;
+
+  border: 1px solid ${({ theme, isSelected }) => (isSelected ? theme['yellow-dark'] : 'transparent')};
 
   font-family: 'Roboto';
   font-style: normal;
@@ -29,6 +34,5 @@ export const PaymentTypeCard = styled.div`
 
   &:hover {
     background-color: ${(props) => props.theme['white-100']};
-    border: 1px solid #E6E5E5;
   }
 `;

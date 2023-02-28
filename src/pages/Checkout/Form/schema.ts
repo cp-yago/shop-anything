@@ -8,4 +8,5 @@ export const addressInfoSchema = yup.object({
   neighborhood: yup.string().required(),
   city: yup.string().required(),
   state: yup.string().required(),
+  paymentMethod: yup.string().oneOf(['creditCard', 'debitCard', 'money']).required(),
 }).required();

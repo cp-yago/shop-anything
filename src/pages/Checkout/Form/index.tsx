@@ -1,16 +1,14 @@
 import { useForm } from "react-hook-form";
-import { Container, Input, Row, PaymentTypeContainer, PaymentTypeCard } from "./styles"
+import { Container, Input, Row } from "./styles"
 import { BiMap } from 'react-icons/bi'
-import { TfiMoney } from 'react-icons/tfi'
-import { BsCreditCard2Back } from 'react-icons/bs'
 import { Card } from "../../../components";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addressInfoSchema } from "./schema";
 import { useEffect } from "react";
 import { useCartContext } from "../../../contexts/CartContext";
+import { PaymentTypeSelector } from "./PaymentTypeSelector";
 
-
-export const OrderData = () => {
+export const Form = () => {
   const { onSubmit } = useCartContext()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -57,33 +55,10 @@ export const OrderData = () => {
             <p className="error-message">Por favor, insira todos os campos obrigatórios!</p>
           )
         }
-
       </Card>
-      <Card>
-        <div className="sub-title">
-          <TfiMoney />
-          <h1>Pagamento</h1>
-        </div>
-        <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
 
-        <PaymentTypeContainer>
-          <PaymentTypeCard>
-            <BsCreditCard2Back />
-            Cartão de crédito
-          </PaymentTypeCard>
+      <PaymentTypeSelector />
 
-          <PaymentTypeCard>
-            <BsCreditCard2Back />
-            Cartão de débito
-          </PaymentTypeCard>
-
-          <PaymentTypeCard>
-            <BsCreditCard2Back />
-            Dinheiro
-          </PaymentTypeCard>
-        </PaymentTypeContainer>
-
-      </Card>
     </Container>
   )
 }

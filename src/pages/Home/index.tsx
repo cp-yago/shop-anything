@@ -5,13 +5,9 @@ import { Intro } from './Intro'
 export const Home = () => {
   return (
     <>
-
       <Navbar />
-
       <Intro />
-
       <ProductList />
-
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { Navbar } from '../../components'
-import { OrderData } from './OrderData'
+import { Form } from './Form'
 import { Container, Content } from './styles'
 import { Summary } from './Summary'
 
@@ -8,7 +8,7 @@ export const Checkout = () => {
     <Container>
       <Navbar />
       <Content>
-        <OrderData />
+        <Form />
         <Summary />
       </Content>
     </Container>

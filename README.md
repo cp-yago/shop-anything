@@ -1,7 +1,7 @@
 <div align="center">
 	<h1>Coffee Delivery</h1>
 	<br>
-	<img src=".github/intro.png" alt="Intro" style="max-width:50%"/>
+	<img src="https://github.com/felipejsborges/coffee-delivery/raw/main/.github/intro.png" alt="Intro" style="max-width:50%"/>
 </div>
 
 # About

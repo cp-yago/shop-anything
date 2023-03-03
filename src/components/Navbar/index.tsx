@@ -1,6 +1,7 @@
 import { BiMap } from 'react-icons/bi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useCallback } from 'react';
 import logoSvg from '../../assets/logo.svg';
 import {
   Container,
@@ -16,7 +17,12 @@ export function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const shouldShowCartButton = !location.pathname.includes('/checkout');
+  const shouldShowCartButton = useCallback((): Boolean => {
+    const isPathAllowed = !['/checkout'].includes(location.pathname);
+    const isCartEmpty = cart.products.length === 0;
+    if (!isPathAllowed || isCartEmpty) return false;
+    return true;
+  }, [cart, location]);
 
   const totalProductsInCar = cart.products.reduce((previousValue, {
     quantity,
@@ -38,7 +44,7 @@ export function Navbar() {
           <BiMap />
           São Paulo, SP
         </LocationButton>
-        {shouldShowCartButton && (
+        {shouldShowCartButton() && (
           <CartButton onClick={handleGoToCart}>
             <HiShoppingCart size={50} />
             {totalProductsInCar > 0 && <Counter>{totalProductsInCar}</Counter>}

@@ -7,7 +7,7 @@ export interface ProductInCart {
   quantity: number
 }
 
-export interface AddressInfo {
+export interface CheckoutFormData {
   zipCode: number
   street: string
   number: number
@@ -15,13 +15,14 @@ export interface AddressInfo {
   neighborhood: string
   city: string
   state: string
+  paymentMethod: string
 }
 
 export type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
 
 export interface CartState {
   products: ProductInCart[]
-  addressInfo?: AddressInfo
+  checkoutFormData?: CheckoutFormData
   paymentMethod: PaymentMethod
   freigthPrice: number
 }
@@ -72,8 +73,7 @@ export function cartReducer(state: CartState, action: any) {
       });
     case ActionTypes.FINISH_ORDER:
       return produce(state, (draft) => {
-        draft.addressInfo = action.payload.addressInfo;
-        draft.paymentMethod = action.payload.paymentMethod;
+        draft.checkoutFormData = action.payload.checkoutFormData;
       });
     default:
       return state;

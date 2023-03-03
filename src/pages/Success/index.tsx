@@ -6,8 +6,13 @@ import { Container, Content, PurchaseDataContainer } from './styles';
 
 import successImage from '../../assets/illustration.svg';
 import { defaultTheme } from '../../styles/themes/default';
+import { useCartContext } from '../../contexts/CartContext';
 
 export function Success() {
+  const { cart: { checkoutFormData } } = useCartContext();
+
+  console.log('debug checkoutFormData', checkoutFormData);
+
   return (
     <Container>
       <Navbar />
@@ -23,7 +28,7 @@ export function Success() {
                 iconBackgroundColor={defaultTheme['purple-light']}
               />
               <p>
-                Entrega em Rua João Daniel Martinelli, 102, Farrapos - Porto Alegre, RS
+                {`Entrega em: ${checkoutFormData?.street}`}
               </p>
             </div>
 

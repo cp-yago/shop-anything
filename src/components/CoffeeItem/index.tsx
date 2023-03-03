@@ -1,5 +1,6 @@
 import { HiShoppingCart } from 'react-icons/hi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   Container,
   BuyContainer,
@@ -9,6 +10,7 @@ import {
 } from './styles';
 
 import { QuantitySelector } from '..';
+import { useCartContext } from '../../contexts/CartContext';
 
 interface CoffeeItemProps {
   id: number
@@ -28,9 +30,19 @@ export function CoffeeItem({
   imgPath,
 }: CoffeeItemProps) {
   const navigate = useNavigate();
+
+  const { cart } = useCartContext();
+
   const handleGoToCart = () => {
     navigate('/checkout');
   };
+
+  const shouldShowCartButton = useMemo((): boolean => {
+    const isCartEmpty = cart.products.length < 1;
+    if (isCartEmpty) { return false; }
+    return true;
+  }, [cart.products]);
+
   return (
     <Container>
       <img src={imgPath} alt="traditional expresso" />
@@ -46,7 +58,7 @@ export function CoffeeItem({
           <span className="price">{price.toFixed(2)}</span>
         </PriceContainer>
         <QuantitySelector productId={id} />
-        <CartButton onClick={handleGoToCart}>
+        <CartButton onClick={handleGoToCart} disabled={!shouldShowCartButton}>
           <HiShoppingCart />
         </CartButton>
       </BuyContainer>

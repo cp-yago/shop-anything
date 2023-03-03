@@ -7,7 +7,12 @@ import {
   useReducer,
   useState,
 } from 'react';
-import { increaseProductQuantity, decreaseProductQuantity, removeProduct } from '../reducers/shopping/actions';
+import {
+  increaseProductQuantity,
+  decreaseProductQuantity,
+  removeProduct,
+  finishOrder,
+} from '../reducers/shopping/actions';
 import { cartReducer, CartState } from '../reducers/shopping/reducer';
 import { listProducts, Product } from '../services/api';
 
@@ -60,7 +65,10 @@ export function CartContextProvider({
     setProducts(coffees);
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log('debug TA CHEGANDO ISSO: ', data);
+    dispatch(finishOrder(data));
+  };
 
   useEffect(() => {
     fetchProducts();

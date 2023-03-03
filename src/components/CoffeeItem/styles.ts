@@ -99,9 +99,13 @@ export const QuantityContainer = styled.div`
   }
 `;
 
-export const CartButton = styled.button`
-  background-color: ${(props) => props.theme['purple-dark']};
-  color: ${(props) => props.theme.white};
+interface CartButtonProps {
+  disabled: boolean
+}
+
+export const CartButton = styled.button<CartButtonProps>`
+  background-color: ${({ theme, disabled }) => (disabled ? theme['gray-200'] : theme['purple-dark'])};
+  color: ${({ theme, disabled }) => (disabled ? theme['gray-200'] : theme.white)};
 
   display: flex;
   align-items: center;
@@ -114,6 +118,6 @@ export const CartButton = styled.button`
   transition: background-color 0.5s;
 
   &:hover {
-    background-color: ${(props) => props.theme['purple-light']};
+    background-color: ${({ theme, disabled }) => (!disabled && theme['purple-light'])};
   }
 `;

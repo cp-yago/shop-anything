@@ -13,6 +13,7 @@ interface SummaryItemProps {
 function SummaryItem({ product }: SummaryItemProps) {
   const { handleRemoveProductFromCart } = useCartContext();
   const total = product.product.price * product.quantity;
+
   return (
     <SummaryItemContainer>
       <div className="image-container">
@@ -42,7 +43,7 @@ export function Summary() {
     product: { price }, quantity,
   }) => previousValue + quantity * price, 0);
 
-  const freightPrice = 9.99;
+  const freightPrice = cart.products.length > 0 ? 9.99 : 0;
 
   return (
     <Container>

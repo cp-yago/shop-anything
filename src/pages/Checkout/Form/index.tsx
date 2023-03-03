@@ -1,23 +1,26 @@
-import { useForm } from 'react-hook-form';
+import { useForm, useFormContext } from 'react-hook-form';
 import { BiMap } from 'react-icons/bi';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Input, Row } from './styles';
 import { Card } from '../../../components';
-import { addressInfoSchema } from './schema';
 import { useCartContext } from '../../../contexts/CartContext';
 import { PaymentMethodSelector } from './PaymentMethodSelector';
 
 export function Form() {
   const { onSubmit } = useCartContext();
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(addressInfoSchema),
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useFormContext();
 
-  useEffect(() => {
-    console.log('debug errors', errors);
-  }, [errors]);
+  const navigate = useNavigate();
+
+  const handleFormSubmit = () => {
+    handleSubmit(onSubmit);
+    navigate('/success');
+  };
 
   return (
     <Container>
@@ -29,7 +32,7 @@ export function Form() {
         </div>
         <p>Informe o endereço onde deseja receber seu pedido</p>
 
-        <form id="addressForm" onSubmit={handleSubmit(onSubmit)}>
+        <form id="addressForm" onSubmit={handleFormSubmit}>
           <Row>
             <Input
               type="text"
@@ -49,12 +52,6 @@ export function Form() {
           <Input type="text" placeholder="Cidade" {...register('city')} width="40%" error={!!errors.city} />
           <Input type="text" placeholder="UF" {...register('state')} width="10%" error={!!errors.state} />
         </form>
-
-        {
-          !!errors && (
-            <p className="error-message">Por favor, insira todos os campos obrigatórios!</p>
-          )
-        }
       </Card>
 
       <PaymentMethodSelector />

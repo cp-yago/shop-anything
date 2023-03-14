@@ -6,10 +6,10 @@ import { Container, Content, PurchaseDataContainer } from './styles';
 
 import successImage from '../../assets/illustration.svg';
 import { defaultTheme } from '../../styles/themes/default';
-import { useCartContext } from '../../contexts/CartContext';
+import { useShoppingContext } from '../../contexts/ShoppingContext';
 
 export function Success() {
-  const { cart: { checkoutFormData } } = useCartContext();
+  const { cart: { checkoutFormData } } = useShoppingContext();
 
   console.log('debug checkoutFormData', checkoutFormData);
 

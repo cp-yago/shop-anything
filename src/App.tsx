@@ -5,7 +5,7 @@ import { Checkout } from './pages/Checkout';
 import { Success } from './pages/Success';
 import { GlobalStyle } from './styles/global';
 import { defaultTheme } from './styles/themes/default';
-import { CartContextProvider } from './contexts/CartContext';
+import { ShoppingContextProvider } from './contexts/ShoppingContext';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,9 @@ const router = createBrowserRouter([
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CartContextProvider>
+      <ShoppingContextProvider>
         <RouterProvider router={router} />
-      </CartContextProvider>
+      </ShoppingContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   );

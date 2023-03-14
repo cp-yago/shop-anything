@@ -16,7 +16,7 @@ import {
 import { cartReducer, CartState } from '../reducers/shopping/reducer';
 import { listProducts, Product } from '../services/api';
 
-interface CartContextType {
+interface ShoppingContextType {
   products: Product[],
   cart: CartState,
   handleIncreaseProductQuantity: (productId: number) => void
@@ -25,9 +25,9 @@ interface CartContextType {
   onSubmit: (data: any) => void
 }
 
-export const CartContext = createContext({} as CartContextType);
+export const ShoppingContext = createContext({} as ShoppingContextType);
 
-interface CartContextProviderProps {
+interface ShoppingContextProviderProps {
   children: ReactNode
 }
 
@@ -37,9 +37,9 @@ const initialState: CartState = {
   paymentMethod: 'creditCard',
 };
 
-export function CartContextProvider({
+export function ShoppingContextProvider({
   children,
-}: CartContextProviderProps) {
+}: ShoppingContextProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
 
   const [cartState, dispatch] = useReducer(
@@ -74,10 +74,6 @@ export function CartContextProvider({
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    console.log('debug cartState: ', cartState);
-  }, [cartState]);
-
   const contextValue = useMemo(() => ({
     products,
     cart: cartState,
@@ -95,13 +91,13 @@ export function CartContextProvider({
   ]);
 
   return (
-    <CartContext.Provider value={contextValue}>
+    <ShoppingContext.Provider value={contextValue}>
       {children}
-    </CartContext.Provider>
+    </ShoppingContext.Provider>
   );
 }
 
-export const useCartContext = () => {
-  const context = useContext(CartContext);
+export const useShoppingContext = () => {
+  const context = useContext(ShoppingContext);
   return context;
 };

@@ -10,7 +10,7 @@ import {
 } from './styles';
 
 import { QuantitySelector } from '..';
-import { useCartContext } from '../../contexts/CartContext';
+import { useShoppingContext } from '../../contexts/ShoppingContext';
 
 interface CoffeeItemProps {
   id: number
@@ -31,7 +31,7 @@ export function CoffeeItem({
 }: CoffeeItemProps) {
   const navigate = useNavigate();
 
-  const { cart } = useCartContext();
+  const { cart } = useShoppingContext();
 
   const handleGoToCart = () => {
     navigate('/checkout');

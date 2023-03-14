@@ -1,14 +1,18 @@
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useMemo } from 'react';
 import { Container } from './styles';
-import { useCartContext } from '../../contexts/CartContext';
+import { useShoppingContext } from '../../contexts/ShoppingContext';
 
 interface QuantitySelectorProps {
   productId: number
 }
 
 export function QuantitySelector({ productId }: QuantitySelectorProps) {
-  const { handleIncreaseProductQuantity, handleDecreaseProductQuantity, cart } = useCartContext();
+  const {
+    handleIncreaseProductQuantity,
+    handleDecreaseProductQuantity,
+    cart,
+  } = useShoppingContext();
 
   const quantity = useMemo(
     () => cart.products.find(

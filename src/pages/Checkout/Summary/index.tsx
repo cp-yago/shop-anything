@@ -2,7 +2,7 @@ import { BiTrash } from 'react-icons/bi';
 import { Card, QuantitySelector } from '../../../components';
 import { Container, SummaryItemContainer } from './styles';
 
-import { useCartContext } from '../../../contexts/CartContext';
+import { useShoppingContext } from '../../../contexts/ShoppingContext';
 import { ProductInCart } from '../../../reducers/shopping/reducer';
 import { formatNumberToCurrency } from '../../../utils/formatNumberToCurrency';
 
@@ -11,7 +11,7 @@ interface SummaryItemProps {
 }
 
 function SummaryItem({ product }: SummaryItemProps) {
-  const { handleRemoveProductFromCart } = useCartContext();
+  const { handleRemoveProductFromCart } = useShoppingContext();
   const total = product.product.price * product.quantity;
 
   return (
@@ -37,7 +37,7 @@ function SummaryItem({ product }: SummaryItemProps) {
 }
 
 export function Summary() {
-  const { cart } = useCartContext();
+  const { cart } = useShoppingContext();
 
   const totalProductsInCar = () => cart.products.reduce((previousValue, {
     product: { price }, quantity,

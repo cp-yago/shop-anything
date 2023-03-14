@@ -10,10 +10,10 @@ import {
   CartButton,
   Counter,
 } from './styles';
-import { useCartContext } from '../../contexts/CartContext';
+import { useShoppingContext } from '../../contexts/ShoppingContext';
 
 export function Navbar() {
-  const { cart } = useCartContext();
+  const { cart } = useShoppingContext();
   const navigate = useNavigate();
   const location = useLocation();
 

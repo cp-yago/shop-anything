@@ -3,11 +3,11 @@ import { BiMap } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { Container, Input, Row } from './styles';
 import { Card } from '../../../components';
-import { useCartContext } from '../../../contexts/CartContext';
+import { useShoppingContext } from '../../../contexts/ShoppingContext';
 import { PaymentMethodSelector } from './PaymentMethodSelector';
 
 export function Form() {
-  const { onSubmit } = useCartContext();
+  const { onSubmit } = useShoppingContext();
 
   const {
     register,

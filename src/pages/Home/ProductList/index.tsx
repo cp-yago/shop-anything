@@ -1,9 +1,9 @@
 import { Container } from './styles';
 import { CoffeeItem } from '../../../components';
-import { useCartContext } from '../../../contexts/CartContext';
+import { useShoppingContext } from '../../../contexts/ShoppingContext';
 
 export function ProductList() {
-  const { products } = useCartContext();
+  const { products } = useShoppingContext();
   return (
     <Container>
       {products.map((product) => (

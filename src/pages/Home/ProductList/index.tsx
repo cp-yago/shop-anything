@@ -1,19 +1,20 @@
 import { Container } from './styles';
 import { CoffeeItem } from '../../../components';
-import { useShoppingContext } from '../../../contexts/ShoppingContext';
+import { useProducts } from '../../../hooks/query/useProducts';
 
 export function ProductList() {
-  const { products } = useShoppingContext();
+  const { data: products } = useProducts();
+
   return (
     <Container>
-      {products.map((product) => (
+      {products?.map((product) => (
         <CoffeeItem
           key={product.id}
           id={product.id}
-          imgPath={product.img}
-          title={product.name}
+          imgPath={product.thumbnail}
+          title={product.title}
           subTitle={product.description}
-          tags={product.tags}
+          tags={['product.tags']}
           price={product.price}
         />
       ))}

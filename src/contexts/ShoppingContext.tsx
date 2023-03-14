@@ -2,10 +2,8 @@ import {
   createContext,
   ReactNode,
   useContext,
-  useEffect,
   useMemo,
   useReducer,
-  useState,
 } from 'react';
 import {
   increaseProductQuantity,
@@ -14,12 +12,10 @@ import {
   finishOrder,
 } from '../reducers/shopping/actions';
 import { cartReducer, CartState } from '../reducers/shopping/reducer';
-import { listProducts, Product } from '../services/api';
 
 interface ShoppingContextType {
-  products: Product[],
   cart: CartState,
-  handleIncreaseProductQuantity: (productId: number) => void
+  // handleIncreaseProductQuantity: (productId: number) => void
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
   onSubmit: (data: any) => void
@@ -40,17 +36,15 @@ const initialState: CartState = {
 export function ShoppingContextProvider({
   children,
 }: ShoppingContextProviderProps) {
-  const [products, setProducts] = useState<Product[]>([]);
-
   const [cartState, dispatch] = useReducer(
     cartReducer,
     initialState,
   );
 
-  const handleIncreaseProductQuantity = (productId: number) => {
-    const product = products.find((product) => product.id === productId);
-    if (product) dispatch(increaseProductQuantity(product));
-  };
+  // const handleIncreaseProductQuantity = (productId: number) => {
+  //   const product = products.find((product) => product.id === productId);
+  //   if (product) dispatch(increaseProductQuantity(product));
+  // };
 
   const handleDecreaseProductQuantity = (productId: number) => {
     dispatch(decreaseProductQuantity(productId));
@@ -60,31 +54,20 @@ export function ShoppingContextProvider({
     dispatch(removeProduct(productId));
   };
 
-  const fetchProducts = async () => {
-    const coffees = await listProducts();
-    setProducts(coffees);
-  };
-
   const onSubmit = (data: any) => {
     console.log('debug TA CHEGANDO ISSO: ', data);
     dispatch(finishOrder(data));
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const contextValue = useMemo(() => ({
-    products,
     cart: cartState,
-    handleIncreaseProductQuantity,
+    // handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,
   }), [
-    products,
     cartState,
-    handleIncreaseProductQuantity,
+    // handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,

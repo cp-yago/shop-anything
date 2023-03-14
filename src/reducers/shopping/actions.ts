@@ -1,4 +1,4 @@
-import { Product } from '../../services/api';
+import { Product } from '../../interfaces/products';
 import { CheckoutFormData, PaymentMethod } from './reducer';
 
 export const enum ActionTypes {

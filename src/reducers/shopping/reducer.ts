@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { Product } from '../../services/api';
+import { Product } from '../../interfaces/products';
 import { ActionTypes } from './actions';
 
 export interface ProductInCart {

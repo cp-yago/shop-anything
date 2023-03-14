@@ -5,6 +5,7 @@ import {
   useMemo,
   useReducer,
 } from 'react';
+import { useProducts } from '../hooks/query/useProducts';
 import {
   increaseProductQuantity,
   decreaseProductQuantity,
@@ -15,7 +16,7 @@ import { cartReducer, CartState } from '../reducers/shopping/reducer';
 
 interface ShoppingContextType {
   cart: CartState,
-  // handleIncreaseProductQuantity: (productId: number) => void
+  handleIncreaseProductQuantity: (productId: number) => void
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
   onSubmit: (data: any) => void
@@ -36,15 +37,17 @@ const initialState: CartState = {
 export function ShoppingContextProvider({
   children,
 }: ShoppingContextProviderProps) {
+  const { data: products } = useProducts();
+
   const [cartState, dispatch] = useReducer(
     cartReducer,
     initialState,
   );
 
-  // const handleIncreaseProductQuantity = (productId: number) => {
-  //   const product = products.find((product) => product.id === productId);
-  //   if (product) dispatch(increaseProductQuantity(product));
-  // };
+  const handleIncreaseProductQuantity = (productId: number) => {
+    const product = products?.find((product) => product.id === productId);
+    if (product) dispatch(increaseProductQuantity(product));
+  };
 
   const handleDecreaseProductQuantity = (productId: number) => {
     dispatch(decreaseProductQuantity(productId));
@@ -61,13 +64,13 @@ export function ShoppingContextProvider({
 
   const contextValue = useMemo(() => ({
     cart: cartState,
-    // handleIncreaseProductQuantity,
+    handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,
   }), [
     cartState,
-    // handleIncreaseProductQuantity,
+    handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,

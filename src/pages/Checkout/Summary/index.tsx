@@ -17,10 +17,10 @@ function SummaryItem({ product }: SummaryItemProps) {
   return (
     <SummaryItemContainer>
       <div className="image-container">
-        <img src={product.product.img} alt="Creamy espresso" />
+        <img src={product.product.thumbnail} alt="Creamy espresso" />
       </div>
       <div className="info-container">
-        <h1>Expresso cremoso</h1>
+        <h1>{product.product.title}</h1>
         <div className="quantity-container">
           <QuantitySelector productId={product.product.id} />
           <button type="button" onClick={() => handleRemoveProductFromCart(product.product.id)}>
@@ -37,19 +37,19 @@ function SummaryItem({ product }: SummaryItemProps) {
 }
 
 export function Summary() {
-  const { cart } = useShoppingContext();
+  const { cart: { products } } = useShoppingContext();
 
-  const totalProductsInCar = () => cart.products.reduce((previousValue, {
+  const totalProductsInCar = () => products.reduce((previousValue, {
     product: { price }, quantity,
   }) => previousValue + quantity * price, 0);
 
-  const freightPrice = cart.products.length > 0 ? 9.99 : 0;
+  const freightPrice = products.length > 0 ? 9.99 : 0;
 
   return (
     <Container>
       <h1>Cafés selecionados</h1>
       <Card>
-        {cart.products.map((product) => (
+        {products.map((product) => (
           <SummaryItem product={product} />
         ))}
 

@@ -6,5 +6,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 0;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 70%;
+  }
 `;

@@ -9,14 +9,18 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: grid;
   align-self: center;
-  width: 1000px;
+
   margin: 64px 0;
 
-  grid-template-areas: 
+  grid-template-areas:
     'title title title image'
     'subtitle subtitle subtitle image'
     'items items items image'
-  ;  
+  ;
+
+  @media screen and (min-width: 1440px) {
+    width: 1100px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -54,6 +58,6 @@ export const ItemsContainer = styled.div`
   grid-area: items;
   display: grid;
   margin-top: 8px;
-  
+
   grid-template-columns: auto auto;
 `;

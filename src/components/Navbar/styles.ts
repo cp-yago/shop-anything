@@ -10,6 +10,10 @@ export const Container = styled.div`
   align-items: center;
 
   padding: 32px 160px;
+
+  @media screen and (min-width: 1440px) {
+    padding: 32px 400px;
+  }
 `;
 
 export const ActionsContainer = styled.div`

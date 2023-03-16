@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: grid;
   align-self: center;
-
+  width: 1000px;
   margin: 64px 0;
 
   grid-template-areas:
@@ -33,8 +33,6 @@ export const TitleContainer = styled.div`
     line-height: 130%;
     margin-bottom: 8px;
   }
-
-  /* background-color: yellow; */
 `;
 
 export const SubTitleContainer = styled.div`

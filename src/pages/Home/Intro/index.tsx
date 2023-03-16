@@ -1,6 +1,6 @@
 import { HiShoppingCart } from 'react-icons/hi';
 import { FiBox, FiClock } from 'react-icons/fi';
-import { BiCoffee } from 'react-icons/bi';
+import { RiMoneyDollarBoxLine } from 'react-icons/ri';
 import { BulletWithIcon } from '../../../components';
 import {
   Container,
@@ -21,36 +21,36 @@ export function Intro() {
       <Content>
 
         <TitleContainer>
-          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+          <h1>Find the ideal product for your needs</h1>
         </TitleContainer>
 
         <SubTitleContainer>
-          <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+          <p>With Shop anything you receive your product wherever you are, at any time</p>
         </SubTitleContainer>
 
         <ImageContainer>
-          <img src={introCoffee} alt="coffee" />
+          <img src="https://i.dummyjson.com/data/products/2/3.jpg" alt="coffee" />
         </ImageContainer>
 
         <ItemsContainer>
           <BulletWithIcon
-            text="Compra simples e segura"
+            text="Simple and secure purchase"
             icon={<HiShoppingCart />}
             iconBackgroundColor={defaultTheme['yellow-dark']}
           />
           <BulletWithIcon
-            text="Embalagem mantém o café intacto"
+            text="Packaging keeps the product intact"
             icon={<FiBox />}
             iconBackgroundColor={defaultTheme['gray-300']}
           />
           <BulletWithIcon
-            text="Entrega rápida e rastreada"
+            text="Fast and tracked delivery"
             icon={<FiClock />}
             iconBackgroundColor={defaultTheme['yellow-brand']}
           />
           <BulletWithIcon
-            text="O café chega fresquinho até você"
-            icon={<BiCoffee />}
+            text="Best price"
+            icon={<RiMoneyDollarBoxLine />}
             iconBackgroundColor={defaultTheme['purple-light']}
           />
         </ItemsContainer>

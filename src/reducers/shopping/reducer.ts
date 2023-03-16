@@ -22,9 +22,7 @@ export type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
 
 export interface CartState {
   products: ProductInCart[]
-  checkoutFormData?: CheckoutFormData
-  paymentMethod: PaymentMethod
-  freigthPrice: number
+  checkoutFormData: CheckoutFormData
 }
 
 export function cartReducer(state: CartState, action: any) {
@@ -75,6 +73,12 @@ export function cartReducer(state: CartState, action: any) {
       return produce(state, (draft) => {
         draft.checkoutFormData = action.payload.checkoutFormData;
       });
+    case ActionTypes.CHANGE_CHECKOUT_FORM_DATA:
+      return produce(state, (draft: any) => {
+        const { field, value } = action.payload;
+        draft.checkoutFormData[field] = value;
+      });
+
     default:
       return state;
   }

@@ -6,6 +6,7 @@ export const enum ActionTypes {
   DECREASE_PRODUCT_QUANTITY = 'DECREASE_PRODUCT_QUANTITY',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
   FINISH_ORDER = 'FINISH_ORDER',
+  CHANGE_CHECKOUT_FORM_DATA = 'CHANGE_CHECKOUT_FORM_DATA'
 }
 
 export function increaseProductQuantity(product: Product) {
@@ -42,6 +43,19 @@ export function finishOrder(
     type: ActionTypes.FINISH_ORDER,
     payload: {
       checkoutFormData,
+    },
+  };
+}
+
+export function onChangeCheckoutFormData(
+  field: string,
+  value: string,
+) {
+  return {
+    type: ActionTypes.CHANGE_CHECKOUT_FORM_DATA,
+    payload: {
+      field,
+      value,
     },
   };
 }

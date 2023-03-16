@@ -2,6 +2,7 @@ import {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
 } from 'react';
@@ -11,14 +12,16 @@ import {
   decreaseProductQuantity,
   removeProduct,
   finishOrder,
+  onChangeCheckoutFormData,
 } from '../reducers/shopping/actions';
-import { cartReducer, CartState } from '../reducers/shopping/reducer';
+import { cartReducer, CartState, CheckoutFormData } from '../reducers/shopping/reducer';
 
 interface ShoppingContextType {
   cart: CartState,
   handleIncreaseProductQuantity: (productId: number) => void
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
+  handleChangeCheckoutFormData: (field: string, value: string) => void
   onSubmit: (data: any) => void
 }
 
@@ -30,8 +33,7 @@ interface ShoppingContextProviderProps {
 
 const initialState: CartState = {
   products: [],
-  freigthPrice: 0,
-  paymentMethod: 'creditCard',
+  checkoutFormData: {} as CheckoutFormData,
 };
 
 export function ShoppingContextProvider({
@@ -57,6 +59,10 @@ export function ShoppingContextProvider({
     dispatch(removeProduct(productId));
   };
 
+  function handleChangeCheckoutFormData(field: string, value: string) {
+    dispatch(onChangeCheckoutFormData(field, value));
+  }
+
   const onSubmit = (data: any) => {
     console.log('debug TA CHEGANDO ISSO: ', data);
     dispatch(finishOrder(data));
@@ -68,12 +74,14 @@ export function ShoppingContextProvider({
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,
+    handleChangeCheckoutFormData,
   }), [
     cartState,
     handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
     onSubmit,
+    handleChangeCheckoutFormData,
   ]);
 
   return (

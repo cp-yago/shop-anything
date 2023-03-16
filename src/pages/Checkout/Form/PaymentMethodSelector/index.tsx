@@ -2,11 +2,14 @@ import { TfiMoney } from 'react-icons/tfi';
 import { BsCreditCard2Back } from 'react-icons/bs';
 import { Card } from '../../../../components';
 import { PaymentTypeOption, PaymentTypeContainer } from './styles';
+import { useShoppingContext } from '../../../../contexts/ShoppingContext';
 
 type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
 
 export function PaymentMethodSelector() {
+  const { handleChangeCheckoutFormData } = useShoppingContext();
   const handleSelectPaymentMethod = (paymentMethod: PaymentMethod) => {
+    handleChangeCheckoutFormData('paymentMethod', paymentMethod);
   };
 
   return (

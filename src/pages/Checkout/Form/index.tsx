@@ -6,7 +6,7 @@ import { useShoppingContext } from '../../../contexts/ShoppingContext';
 import { PaymentMethodSelector } from './PaymentMethodSelector';
 
 export function Form() {
-  const { onSubmit } = useShoppingContext();
+  const { handleChangeCheckoutFormData } = useShoppingContext();
 
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ export function Form() {
               type="text"
               placeholder="CEP"
               name="zipCode"
+              onChange={(e) => handleChangeCheckoutFormData('zipCode', e.target.value)}
             />
           </Row>
           <Row>
@@ -38,6 +39,7 @@ export function Form() {
               placeholder="Rua"
               name="street"
               width="100%"
+              onChange={(e) => handleChangeCheckoutFormData('street', e.target.value)}
             />
           </Row>
           <Row>
@@ -46,12 +48,14 @@ export function Form() {
               placeholder="Número"
               name="number"
               width="40%"
+              onChange={(e) => handleChangeCheckoutFormData('number', e.target.value)}
             />
             <Input
               type="text"
               placeholder="Complemento"
               name="additionalInfo"
               width="60%"
+              onChange={(e) => handleChangeCheckoutFormData('additionalInfo', e.target.value)}
             />
           </Row>
           <Input
@@ -59,18 +63,21 @@ export function Form() {
             placeholder="Bairo"
             name="neighborhood"
             width="40%"
+            onChange={(e) => handleChangeCheckoutFormData('neighborhood', e.target.value)}
           />
           <Input
             type="text"
             placeholder="Cidade"
             name="city"
             width="40%"
+            onChange={(e) => handleChangeCheckoutFormData('city', e.target.value)}
           />
           <Input
             type="text"
             placeholder="UF"
             name="state"
             width="10%"
+            onChange={(e) => handleChangeCheckoutFormData('state', e.target.value)}
           />
         </form>
       </Card>

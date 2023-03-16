@@ -1,4 +1,3 @@
-import { useForm, useFormContext } from 'react-hook-form';
 import { BiMap } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { Container, Input, Row } from './styles';
@@ -9,16 +8,9 @@ import { PaymentMethodSelector } from './PaymentMethodSelector';
 export function Form() {
   const { onSubmit } = useShoppingContext();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useFormContext();
-
   const navigate = useNavigate();
 
   const handleFormSubmit = () => {
-    handleSubmit(onSubmit);
     navigate('/success');
   };
 
@@ -37,55 +29,48 @@ export function Form() {
             <Input
               type="text"
               placeholder="CEP"
-              error={!!errors.zipCode}
-              {...register('zipCode')}
+              name="zipCode"
             />
           </Row>
           <Row>
             <Input
               type="text"
               placeholder="Rua"
-              {...register('street')}
+              name="street"
               width="100%"
-              error={!!errors.street}
             />
           </Row>
           <Row>
             <Input
               type="text"
               placeholder="Número"
-              {...register('number')}
+              name="number"
               width="40%"
-              error={!!errors.number}
             />
             <Input
               type="text"
               placeholder="Complemento"
-              {...register('additionalInfo')}
+              name="additionalInfo"
               width="60%"
-              error={!!errors.additionalInfo}
             />
           </Row>
           <Input
             type="text"
             placeholder="Bairo"
-            {...register('neighborhood')}
+            name="neighborhood"
             width="40%"
-            error={!!errors.neighborhood}
           />
           <Input
             type="text"
             placeholder="Cidade"
-            {...register('city')}
+            name="city"
             width="40%"
-            error={!!errors.city}
           />
           <Input
             type="text"
             placeholder="UF"
-            {...register('state')}
+            name="state"
             width="10%"
-            error={!!errors.state}
           />
         </form>
       </Card>

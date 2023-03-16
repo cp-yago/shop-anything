@@ -19,19 +19,6 @@ export const ActionsContainer = styled.div`
   align-items: center;
 `;
 
-export const LocationButton = styled.button`
-  background-color: ${(props) => props.theme['purple-brand']};
-  color: ${(props) => props.theme['purple-dark']};
-  padding: 8px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-right: 8px;
-  }
-`;
-
 export const CartButton = styled.button`
   background-color: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};

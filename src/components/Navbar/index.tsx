@@ -1,11 +1,9 @@
-import { BiMap } from 'react-icons/bi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCallback } from 'react';
 import {
   Container,
   ActionsContainer,
-  LocationButton,
   CartButton,
   Counter,
 } from './styles';
@@ -31,18 +29,10 @@ export function Navbar() {
     navigate('/checkout');
   };
 
-  const handleGoHome = () => {
-    navigate('/');
-  };
-
   return (
     <Container>
       <h1>Shop anything</h1>
       <ActionsContainer>
-        <LocationButton>
-          <BiMap />
-          São Paulo, SP
-        </LocationButton>
         {shouldShowCartButton() && (
           <CartButton onClick={handleGoToCart}>
             <HiShoppingCart size={50} />

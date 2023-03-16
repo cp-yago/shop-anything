@@ -42,15 +42,51 @@ export function Form() {
             />
           </Row>
           <Row>
-            <Input type="text" placeholder="Rua" {...register('street')} width="100%" error={!!errors.street} />
+            <Input
+              type="text"
+              placeholder="Rua"
+              {...register('street')}
+              width="100%"
+              error={!!errors.street}
+            />
           </Row>
           <Row>
-            <Input type="text" placeholder="Número" {...register('number')} width="40%" error={!!errors.number} />
-            <Input type="text" placeholder="Complemento" {...register('additionalInfo')} width="60%" error={!!errors.additionalInfo} />
+            <Input
+              type="text"
+              placeholder="Número"
+              {...register('number')}
+              width="40%"
+              error={!!errors.number}
+            />
+            <Input
+              type="text"
+              placeholder="Complemento"
+              {...register('additionalInfo')}
+              width="60%"
+              error={!!errors.additionalInfo}
+            />
           </Row>
-          <Input type="text" placeholder="Bairo" {...register('neighborhood')} width="40%" error={!!errors.neighborhood} />
-          <Input type="text" placeholder="Cidade" {...register('city')} width="40%" error={!!errors.city} />
-          <Input type="text" placeholder="UF" {...register('state')} width="10%" error={!!errors.state} />
+          <Input
+            type="text"
+            placeholder="Bairo"
+            {...register('neighborhood')}
+            width="40%"
+            error={!!errors.neighborhood}
+          />
+          <Input
+            type="text"
+            placeholder="Cidade"
+            {...register('city')}
+            width="40%"
+            error={!!errors.city}
+          />
+          <Input
+            type="text"
+            placeholder="UF"
+            {...register('state')}
+            width="10%"
+            error={!!errors.state}
+          />
         </form>
       </Card>
 

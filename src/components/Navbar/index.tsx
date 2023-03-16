@@ -2,7 +2,6 @@ import { BiMap } from 'react-icons/bi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCallback } from 'react';
-import logoSvg from '../../assets/logo.svg';
 import {
   Container,
   ActionsContainer,
@@ -38,7 +37,7 @@ export function Navbar() {
 
   return (
     <Container>
-      <img src={logoSvg} alt="logo" onClick={handleGoHome} />
+      <h1>Shop anything</h1>
       <ActionsContainer>
         <LocationButton>
           <BiMap />

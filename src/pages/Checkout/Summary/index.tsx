@@ -25,7 +25,7 @@ function SummaryItem({ product }: SummaryItemProps) {
           <QuantitySelector productId={product.product.id} />
           <button type="button" onClick={() => handleRemoveProductFromCart(product.product.id)}>
             <BiTrash />
-            Remover
+            Remove
           </button>
         </div>
       </div>
@@ -47,7 +47,7 @@ export function Summary() {
 
   return (
     <Container>
-      <h1>Cafés selecionados</h1>
+      <h1>Products</h1>
       <Card>
         {products.map((product) => (
           <SummaryItem product={product} />
@@ -55,11 +55,11 @@ export function Summary() {
 
         <div className="total-container">
           <div className="total-item">
-            <span>Total de itens</span>
+            <span>Total (Products)</span>
             <span>{formatNumberToCurrency(totalProductsInCar())}</span>
           </div>
           <div className="total-item">
-            <span>Entrega</span>
+            <span>Delivery fee</span>
             <span>{formatNumberToCurrency(freightPrice)}</span>
           </div>
           <div className="total-item">
@@ -74,7 +74,7 @@ export function Summary() {
             type="submit"
             form="addressForm"
           >
-            Confirmar pedido
+            Confirm
           </button>
         </div>
       </Card>

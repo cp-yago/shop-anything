@@ -24,13 +24,13 @@ export function Form() {
 
   return (
     <Container>
-      <h1 className="section-title">Complete seu pedido</h1>
+      <h1 className="section-title">Complete your order</h1>
       <Card>
         <div className="sub-title">
           <BiMap />
-          <h1>Endereço de entrega</h1>
+          <h1>Delivery address</h1>
         </div>
-        <p>Informe o endereço onde deseja receber seu pedido</p>
+        <p>Enter the address where you want to receive your order</p>
 
         <form id="addressForm" onSubmit={handleFormSubmit}>
           <Row>

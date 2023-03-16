@@ -15,15 +15,13 @@ export function PaymentMethodSelector() {
 
   const paymentMethod = watch('paymentMethod');
 
-  console.log('debug paymentMethod', paymentMethod);
-
   return (
     <Card>
       <div className="sub-title">
         <TfiMoney />
-        <h1>Pagamento</h1>
+        <h1>Payment</h1>
       </div>
-      <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+      <p>Payment is made on delivery. Choose the way you want to pay</p>
 
       <PaymentTypeContainer>
         <PaymentTypeOption
@@ -32,7 +30,7 @@ export function PaymentMethodSelector() {
           isSelected={paymentMethod === 'creditCard'}
         >
           <BsCreditCard2Back />
-          Cartão de crédito
+          Credit card
         </PaymentTypeOption>
 
         <PaymentTypeOption
@@ -41,7 +39,7 @@ export function PaymentMethodSelector() {
           isSelected={paymentMethod === 'debitCard'}
         >
           <BsCreditCard2Back />
-          Cartão de débito
+          Debit card
         </PaymentTypeOption>
 
         <PaymentTypeOption
@@ -50,7 +48,7 @@ export function PaymentMethodSelector() {
           isSelected={paymentMethod === 'money'}
         >
           <BsCreditCard2Back />
-          Dinheiro
+          Money
         </PaymentTypeOption>
       </PaymentTypeContainer>
 

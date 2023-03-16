@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 90%;
+  width: 85%;
   display: flex;
   flex-direction: row;
 `;

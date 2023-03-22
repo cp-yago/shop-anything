@@ -1,12 +1,21 @@
+import { ZodIssue } from 'zod';
 import { Product } from '../../interfaces/products';
-import { CheckoutFormData, PaymentMethod } from './reducer';
 
 export const enum ActionTypes {
   INCREASE_PRODUCT_QUANTITY = 'INCREASE_PRODUCT_QUANTITY',
   DECREASE_PRODUCT_QUANTITY = 'DECREASE_PRODUCT_QUANTITY',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
-  FINISH_ORDER = 'FINISH_ORDER',
-  CHANGE_CHECKOUT_FORM_DATA = 'CHANGE_CHECKOUT_FORM_DATA'
+  CHANGE_CHECKOUT_FORM_DATA = 'CHANGE_CHECKOUT_FORM_DATA',
+  SET_CHECKOUT_FORM_DATA_ERRORS = 'SET_CHECKOUT_FORM_DATA_ERRORS'
+}
+
+export function setCheckoutFormDataErrors(checkoutFormDataErrors: ZodIssue[]) {
+  return {
+    type: ActionTypes.SET_CHECKOUT_FORM_DATA_ERRORS,
+    payload: {
+      checkoutFormDataErrors,
+    },
+  };
 }
 
 export function increaseProductQuantity(product: Product) {
@@ -32,17 +41,6 @@ export function removeProduct(productId: number) {
     type: ActionTypes.REMOVE_PRODUCT,
     payload: {
       productId,
-    },
-  };
-}
-
-export function finishOrder(
-  checkoutFormData: CheckoutFormData,
-) {
-  return {
-    type: ActionTypes.FINISH_ORDER,
-    payload: {
-      checkoutFormData,
     },
   };
 }

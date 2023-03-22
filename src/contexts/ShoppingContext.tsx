@@ -7,12 +7,13 @@ import {
   useReducer,
 } from 'react';
 import { useProducts } from '../hooks/query/useProducts';
+import { validateSchema } from '../pages/Checkout/Form/schemaValidator';
 import {
   increaseProductQuantity,
   decreaseProductQuantity,
   removeProduct,
-  finishOrder,
   onChangeCheckoutFormData,
+  setCheckoutFormDataErrors,
 } from '../reducers/shopping/actions';
 import { cartReducer, CartState, CheckoutFormData } from '../reducers/shopping/reducer';
 
@@ -22,7 +23,7 @@ interface ShoppingContextType {
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
   handleChangeCheckoutFormData: (field: string, value: string) => void
-  onSubmit: (data: any) => void
+  onSubmit: () => void
 }
 
 export const ShoppingContext = createContext({} as ShoppingContextType);
@@ -33,7 +34,7 @@ interface ShoppingContextProviderProps {
 
 const initialState: CartState = {
   products: [],
-  checkoutFormData: {} as CheckoutFormData,
+  checkoutFormData: { paymentMethod: 'creditCard' } as CheckoutFormData,
 };
 
 export function ShoppingContextProvider({
@@ -63,10 +64,19 @@ export function ShoppingContextProvider({
     dispatch(onChangeCheckoutFormData(field, value));
   }
 
-  const onSubmit = (data: any) => {
-    console.log('debug TA CHEGANDO ISSO: ', data);
-    dispatch(finishOrder(data));
+  const onSubmit = () => {
+    const schemaValidation = validateSchema(cartState.checkoutFormData);
+    if (schemaValidation !== 'ok') {
+      dispatch(setCheckoutFormDataErrors(schemaValidation));
+      console.log('debug schemaValidation', schemaValidation);
+    } else {
+      window.location.href = '/success';
+    }
   };
+
+  useEffect(() => {
+    console.log('debug schemaValidation', cartState.checkoutFormDataErrors);
+  }, [cartState.checkoutFormDataErrors]);
 
   const contextValue = useMemo(() => ({
     cart: cartState,

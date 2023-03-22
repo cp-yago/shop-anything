@@ -7,7 +7,7 @@ import { useShoppingContext } from '../../../../contexts/ShoppingContext';
 type PaymentMethod = 'creditCard' | 'debitCard' | 'money'
 
 export function PaymentMethodSelector() {
-  const { handleChangeCheckoutFormData } = useShoppingContext();
+  const { handleChangeCheckoutFormData, cart: { checkoutFormData } } = useShoppingContext();
   const handleSelectPaymentMethod = (paymentMethod: PaymentMethod) => {
     handleChangeCheckoutFormData('paymentMethod', paymentMethod);
   };
@@ -24,7 +24,7 @@ export function PaymentMethodSelector() {
         <PaymentTypeOption
           type="button"
           onClick={() => handleSelectPaymentMethod('creditCard')}
-          isSelected={false}
+          isSelected={checkoutFormData.paymentMethod === 'creditCard'}
         >
           <BsCreditCard2Back />
           Credit card
@@ -33,7 +33,7 @@ export function PaymentMethodSelector() {
         <PaymentTypeOption
           type="button"
           onClick={() => handleSelectPaymentMethod('debitCard')}
-          isSelected={false}
+          isSelected={checkoutFormData.paymentMethod === 'debitCard'}
         >
           <BsCreditCard2Back />
           Debit card
@@ -42,7 +42,7 @@ export function PaymentMethodSelector() {
         <PaymentTypeOption
           type="button"
           onClick={() => handleSelectPaymentMethod('money')}
-          isSelected={false}
+          isSelected={checkoutFormData.paymentMethod === 'money'}
         >
           <BsCreditCard2Back />
           Money

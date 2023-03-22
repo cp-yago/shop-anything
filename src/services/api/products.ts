@@ -9,12 +9,7 @@ export interface GetProductsResponse {
   products: Product[]
 }
 
-interface GetProductsParams {
-  limit?: number
-  skip?: number
-}
-
-export const getProducts = async ({ limit = 8, skip = 0 }: GetProductsParams) => {
-  const response = await instance.get<GetProductsResponse>(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
+export const getProducts = async () => {
+  const response = await instance.get<GetProductsResponse>('https://dummyjson.com/products?limit=8&skip=0');
   return response.data.products;
 };

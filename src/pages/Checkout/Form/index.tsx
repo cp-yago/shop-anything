@@ -1,18 +1,12 @@
 import { BiMap } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { Container, Input, Row } from './styles';
-import { Card } from '../../../components';
+import { Container, Row } from './styles';
+import { Card, TextInput } from '../../../components';
 import { useShoppingContext } from '../../../contexts/ShoppingContext';
 import { PaymentMethodSelector } from './PaymentMethodSelector';
 
 export function Form() {
   const { handleChangeCheckoutFormData } = useShoppingContext();
-
-  const navigate = useNavigate();
-
-  const handleFormSubmit = () => {
-    navigate('/success');
-  };
 
   return (
     <Container>
@@ -24,61 +18,64 @@ export function Form() {
         </div>
         <p>Enter the address where you want to receive your order</p>
 
-        <form id="addressForm" onSubmit={handleFormSubmit}>
+        <form id="addressForm">
           <Row>
-            <Input
+            <TextInput
               type="text"
-              placeholder="CEP"
+              placeholder="Zip code"
+              width="30%"
               name="zipCode"
               onChange={(e) => handleChangeCheckoutFormData('zipCode', e.target.value)}
             />
           </Row>
           <Row>
-            <Input
+            <TextInput
               type="text"
-              placeholder="Rua"
+              placeholder="Street"
               name="street"
-              width="100%"
+              width="90%"
               onChange={(e) => handleChangeCheckoutFormData('street', e.target.value)}
             />
           </Row>
           <Row>
-            <Input
+            <TextInput
               type="text"
-              placeholder="Número"
+              placeholder="Number"
+              width="80%"
               name="number"
-              width="40%"
               onChange={(e) => handleChangeCheckoutFormData('number', e.target.value)}
             />
-            <Input
+            <TextInput
               type="text"
-              placeholder="Complemento"
+              placeholder="Additional info"
               name="additionalInfo"
-              width="60%"
+              width="90%"
               onChange={(e) => handleChangeCheckoutFormData('additionalInfo', e.target.value)}
             />
           </Row>
-          <Input
-            type="text"
-            placeholder="Bairo"
-            name="neighborhood"
-            width="40%"
-            onChange={(e) => handleChangeCheckoutFormData('neighborhood', e.target.value)}
-          />
-          <Input
-            type="text"
-            placeholder="Cidade"
-            name="city"
-            width="40%"
-            onChange={(e) => handleChangeCheckoutFormData('city', e.target.value)}
-          />
-          <Input
-            type="text"
-            placeholder="UF"
-            name="state"
-            width="10%"
-            onChange={(e) => handleChangeCheckoutFormData('state', e.target.value)}
-          />
+          <Row>
+            <TextInput
+              type="text"
+              placeholder="Neighborhood"
+              name="neighborhood"
+              width="80%"
+              onChange={(e) => handleChangeCheckoutFormData('neighborhood', e.target.value)}
+            />
+            <TextInput
+              type="text"
+              placeholder="City"
+              name="city"
+              width="80%"
+              onChange={(e) => handleChangeCheckoutFormData('city', e.target.value)}
+            />
+            <TextInput
+              type="text"
+              placeholder="State"
+              name="state"
+              width="80%"
+              onChange={(e) => handleChangeCheckoutFormData('state', e.target.value)}
+            />
+          </Row>
         </form>
       </Card>
 

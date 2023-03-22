@@ -37,7 +37,7 @@ function SummaryItem({ product }: SummaryItemProps) {
 }
 
 export function Summary() {
-  const { cart: { products } } = useShoppingContext();
+  const { cart: { products }, onSubmit } = useShoppingContext();
 
   const totalProductsInCar = () => products.reduce((previousValue, {
     product: { price }, quantity,
@@ -50,7 +50,7 @@ export function Summary() {
       <h1>Products</h1>
       <Card>
         {products.map((product) => (
-          <SummaryItem product={product} />
+          <SummaryItem key={product.product.id} product={product} />
         ))}
 
         <div className="total-container">
@@ -71,8 +71,9 @@ export function Summary() {
             </span>
           </div>
           <button
-            type="submit"
+            type="button"
             form="addressForm"
+            onClick={onSubmit}
           >
             Confirm
           </button>

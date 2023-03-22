@@ -11,15 +11,21 @@ import { useShoppingContext } from '../../contexts/ShoppingContext';
 export function Success() {
   const { cart: { checkoutFormData } } = useShoppingContext();
 
-  console.log('debug checkoutFormData', checkoutFormData);
+  const getCurrentDate = () => {
+    const date = new Date();
+    const month = date.getMonth();
+    const day = date.getDay();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
 
   return (
     <Container>
       <Navbar />
       <Content>
         <PurchaseDataContainer>
-          <h1>Uhu! Pedido confirmado</h1>
-          <p>Agora é só aguardar que logo o café chegará até você</p>
+          <h1>Thank you!</h1>
+          <p>Now just wait for your product to reach you soon.</p>
 
           <div className="purchase-data-container">
             <div className="info-container">
@@ -38,7 +44,7 @@ export function Success() {
                 iconBackgroundColor={defaultTheme['yellow-brand']}
               />
               <p>
-                Previsão de entrega 20 min - 30 min
+                {`Delivery date: ${getCurrentDate()}`}
               </p>
             </div>
 
@@ -48,7 +54,7 @@ export function Success() {
                 iconBackgroundColor={defaultTheme['yellow-dark']}
               />
               <p>
-                Pagamento na entrega Cartão de Crédito
+                Payment on delivery
               </p>
             </div>
 

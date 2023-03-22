@@ -1,4 +1,5 @@
 import { BiTrash } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 import { Card, QuantitySelector } from '../../../components';
 import { Container, SummaryItemContainer } from './styles';
 
@@ -37,13 +38,19 @@ function SummaryItem({ product }: SummaryItemProps) {
 }
 
 export function Summary() {
-  const { cart: { products }, onSubmit } = useShoppingContext();
+  const { cart: { products }, validateCheckoutForm } = useShoppingContext();
+  const navigate = useNavigate();
 
   const totalProductsInCar = () => products.reduce((previousValue, {
     product: { price }, quantity,
   }) => previousValue + quantity * price, 0);
 
   const freightPrice = products.length > 0 ? 9.99 : 0;
+
+  const handleSubmit = () => {
+    const formValidation = validateCheckoutForm();
+    if (formValidation.ok) navigate('/success');
+  };
 
   return (
     <Container>
@@ -73,7 +80,7 @@ export function Summary() {
           <button
             type="button"
             form="addressForm"
-            onClick={onSubmit}
+            onClick={handleSubmit}
           >
             Confirm
           </button>

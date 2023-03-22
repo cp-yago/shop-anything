@@ -23,7 +23,7 @@ interface ShoppingContextType {
   handleDecreaseProductQuantity: (productId: number) => void
   handleRemoveProductFromCart: (productId: number) => void
   handleChangeCheckoutFormData: (field: string, value: string) => void
-  onSubmit: () => void
+  validateCheckoutForm: () => { ok: boolean }
 }
 
 export const ShoppingContext = createContext({} as ShoppingContextType);
@@ -62,36 +62,35 @@ export function ShoppingContextProvider({
 
   function handleChangeCheckoutFormData(field: string, value: string) {
     dispatch(onChangeCheckoutFormData(field, value));
-  }
-
-  const onSubmit = () => {
     const schemaValidation = validateSchema(cartState.checkoutFormData);
     if (schemaValidation !== 'ok') {
       dispatch(setCheckoutFormDataErrors(schemaValidation));
-      console.log('debug schemaValidation', schemaValidation);
-    } else {
-      window.location.href = '/success';
     }
-  };
+  }
 
-  useEffect(() => {
-    console.log('debug schemaValidation', cartState.checkoutFormDataErrors);
-  }, [cartState.checkoutFormDataErrors]);
+  const validateCheckoutForm = () => {
+    const schemaValidation = validateSchema(cartState.checkoutFormData);
+    if (schemaValidation !== 'ok') {
+      dispatch(setCheckoutFormDataErrors(schemaValidation));
+      return { ok: false };
+    }
+    return { ok: true };
+  };
 
   const contextValue = useMemo(() => ({
     cart: cartState,
     handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
-    onSubmit,
     handleChangeCheckoutFormData,
+    validateCheckoutForm,
   }), [
     cartState,
     handleIncreaseProductQuantity,
     handleDecreaseProductQuantity,
     handleRemoveProductFromCart,
-    onSubmit,
     handleChangeCheckoutFormData,
+    validateCheckoutForm,
   ]);
 
   return (

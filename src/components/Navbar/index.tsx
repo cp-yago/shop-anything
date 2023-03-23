@@ -6,8 +6,10 @@ import {
   ActionsContainer,
   CartButton,
   Counter,
+  Logo,
 } from './styles';
 import { useShoppingContext } from '../../contexts/ShoppingContext';
+import LogoImg from '../../assets/logo.png';
 
 export function Navbar() {
   const { cart } = useShoppingContext();
@@ -15,7 +17,7 @@ export function Navbar() {
   const location = useLocation();
 
   const shouldShowCartButton = useCallback((): Boolean => {
-    const isPathAllowed = !['/checkout'].includes(location.pathname);
+    const isPathAllowed = !['/checkout', '/success'].includes(location.pathname);
     const isCartEmpty = cart.products.length === 0;
     if (!isPathAllowed || isCartEmpty) return false;
     return true;
@@ -31,7 +33,9 @@ export function Navbar() {
 
   return (
     <Container>
-      <h1>Shop anything</h1>
+      <button type="button" onClick={() => navigate('/')}>
+        <Logo src={LogoImg} alt="Shop anything" />
+      </button>
       <ActionsContainer>
         {shouldShowCartButton() && (
           <CartButton onClick={handleGoToCart}>

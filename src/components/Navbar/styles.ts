@@ -7,13 +7,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
-  padding: 32px 160px;
+  button {
+    background: transparent;
+  }
 
   @media screen and (min-width: 1440px) {
     padding: 32px 400px;
   }
+`;
+
+export const Logo = styled.img`
+  width: 200px;
 `;
 
 export const ActionsContainer = styled.div`

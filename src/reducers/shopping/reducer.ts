@@ -49,9 +49,11 @@ export function cartReducer(state: CartState, action: any) {
         const productIndex = state.products.findIndex(
           (product) => product.product.id === action.payload.productId,
         );
+
         const alreadyInCart = productIndex > -1;
-        const productQuantity = draft.products[productIndex].quantity;
+
         if (alreadyInCart) {
+          const productQuantity = draft.products[productIndex].quantity;
           draft.products[productIndex].quantity--;
           if (productQuantity === 1) {
             draft.products.splice(productIndex, 1);

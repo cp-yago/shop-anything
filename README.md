@@ -1,29 +1,34 @@
 <div align="center">
-	<h1>Coffee Delivery</h1>
 	<br>
-	<img src="https://github.com/felipejsborges/coffee-delivery/raw/main/.github/intro.png" alt="Intro" style="max-width:50%"/>
+	<img src="https://shop-anything.vercel.app/assets/logo-22279440.png" alt="Intro" style="max-width:50%"/>
 </div>
 
 # About
 
-Application to manage a shopping cart of a fictitious coffee shop.
+[Shop anything](https://shop-anything.vercel.app/) is a fake application to manage a shopping cart of a e-commerce.
 
 # Objective
 
-The objective is to practice the concepts of ReactJS like ContextAPI, LocalStorage, lists and keys, properties and componentization.
+The objective is to practice the concepts of React like ContextAPI, LocalStorage, lists and keys, properties and componentization.
+
+# Technologies used
+
+- [React](https://react.dev/)
+- [Axios](https://axios-http.com/docs/intro)
+- [TanStack Query (React Query)](https://tanstack.com/query/latest/docs/react/quick-start)
+- [React Router](https://reactrouter.com/en/main)
+- [Styled Components](https://styled-components.com/)
+- [Immer](https://immerjs.github.io/immer/)
+- [React Icons](https://react-icons.github.io/react-icons)
+- [Zod](https://zod.dev/)
+
+# Deploy
+
+- [Click here to access the app deployed at Vercel](https://shop-anything.vercel.app/)
 
 # Figma
 
-[Click here](https://www.figma.com/file/f8Pd3QDmAjB0YSFD63wTcw/Coffee-Delivery-(Copy)?node-id=0%3A1&t=acr9JdPQqlicCipd-0) to access the UI design.
-
-# Requirements
-
-- [X] Show a list of coffees available for shopping.
-- [X] Add items on cart
-- [X] Increase, decrease or change items quantity on cart
-- [X] Address form
-- [X] Show quantity of selected items on Coffee Icon on Header
-- [X] Show total price
+[Click here](https://www.figma.com/file/f8Pd3QDmAjB0YSFD63wTcw/Coffee-Delivery-(Copy)?node-id=0%3A1&t=acr9JdPQqlicCipd-0) to access the UI design I was inspired by.
 
 # Run locally
 
@@ -33,16 +38,13 @@ The objective is to practice the concepts of ReactJS like ContextAPI, LocalStora
 
 ```
 # clone this repo
-$ git clone https://github.com/cp-yago/coffee-ecommerce.git
+$ git clone https://github.com/cp-yago/shop-anything.git
 
 # go to project folder
-$ cd coffee-delivery
+$ cd shop-anything
 
 # install dependencies
 $ yarn
-
-# run json server
-$ json-server --watch ---delay 1000 db.json
 
 # run the app
 $ yarn dev

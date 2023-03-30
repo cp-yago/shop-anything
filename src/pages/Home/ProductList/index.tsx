@@ -1,5 +1,5 @@
 import { Container } from './styles';
-import { CoffeeItem } from '../../../components';
+import { ProductItem } from '../../../components';
 import { useProducts } from '../../../hooks/query/useProducts';
 
 export function ProductList() {
@@ -8,7 +8,7 @@ export function ProductList() {
   return (
     <Container>
       {products?.map((product) => (
-        <CoffeeItem
+        <ProductItem
           key={product.id}
           id={product.id}
           imgPath={product.thumbnail}

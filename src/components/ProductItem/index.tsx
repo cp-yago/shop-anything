@@ -1,6 +1,6 @@
 import { HiShoppingCart } from 'react-icons/hi';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useMemo } from 'react';
 import {
   Container,
   BuyContainer,
@@ -12,7 +12,7 @@ import {
 import { QuantitySelector } from '..';
 import { useShoppingContext } from '../../contexts/ShoppingContext';
 
-interface CoffeeItemProps {
+interface ProductItemProps {
   id: number
   title: string
   subTitle: string
@@ -21,14 +21,14 @@ interface CoffeeItemProps {
   imgPath: string
 }
 
-export function CoffeeItem({
+export function ProductItem({
   id,
   title,
   subTitle,
   tags,
   price,
   imgPath,
-}: CoffeeItemProps) {
+}: ProductItemProps) {
   const navigate = useNavigate();
 
   const { cart } = useShoppingContext();
@@ -45,7 +45,7 @@ export function CoffeeItem({
 
   return (
     <Container>
-      <img src={imgPath} alt="traditional expresso" />
+      <img src={imgPath} alt={title} />
       <div>
         {tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
       </div>

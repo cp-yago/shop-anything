@@ -1,4 +1,4 @@
-export * from './Navbar';
+export * from './Header';
 export * from './Card';
 export * from './QuantitySelector';
 export * from './BulletWithIcon';

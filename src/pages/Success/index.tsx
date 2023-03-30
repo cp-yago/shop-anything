@@ -1,7 +1,7 @@
 import { BiMap } from 'react-icons/bi';
 import { FiClock } from 'react-icons/fi';
 import { TfiMoney } from 'react-icons/tfi';
-import { IconWithBackground, Navbar } from '../../components';
+import { IconWithBackground, Header } from '../../components';
 import { Container, Content, PurchaseDataContainer } from './styles';
 
 import successImage from '../../assets/illustration.svg';
@@ -21,7 +21,7 @@ export function Success() {
 
   return (
     <Container>
-      <Navbar />
+      <Header />
       <Content>
         <PurchaseDataContainer>
           <h1>Thank you!</h1>

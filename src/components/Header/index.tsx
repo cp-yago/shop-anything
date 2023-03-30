@@ -11,7 +11,7 @@ import {
 import { useShoppingContext } from '../../contexts/ShoppingContext';
 import LogoImg from '../../assets/logo.png';
 
-export function Navbar() {
+export function Header() {
   const { cart } = useShoppingContext();
   const navigate = useNavigate();
   const location = useLocation();
